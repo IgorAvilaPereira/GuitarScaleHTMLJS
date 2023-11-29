@@ -62,16 +62,20 @@
             var s = shapes[i];
             alert("O shape "+s.nome+" receberá a configuração que está em exibição");
             s.nome = prompt("Novo nome para "+s.nome+"?", s.nome);
-            var shapeNovo = []
-            for (let index = 0; index < vetBotao.length; index++) {
-                if (/*vetBotao[index].innerHTML == "--" ||*/ vetBotao[index].innerHTML == "1" || vetBotao[index].innerHTML == "2" || vetBotao[index].innerHTML == "3" || vetBotao[index].innerHTML == "4") {
-                    shapeNovo.push({ "botao": vetBotao[index].id, "dedo": vetBotao[index].innerHTML, "tonica": vetBotao[index].style.backgroundColor})
+            if (s.nome != ""){
+                var shapeNovo = []
+                for (let index = 0; index < vetBotao.length; index++) {
+                    if (/*vetBotao[index].innerHTML == "--" ||*/ vetBotao[index].innerHTML == "1" || vetBotao[index].innerHTML == "2" || vetBotao[index].innerHTML == "3" || vetBotao[index].innerHTML == "4") {
+                        shapeNovo.push({ "botao": vetBotao[index].id, "dedo": vetBotao[index].innerHTML, "tonica": vetBotao[index].style.backgroundColor})
+                    }
                 }
+                s.shape = shapeNovo;
+                shapes[i] = s;
+                localStorage.setItem("shapes", JSON.stringify(shapes));
+                listar_shapes();
+            } else {
+                alert("nome não pode estar em branco");
             }
-            s.shape = shapeNovo;
-            shapes[i] = s;
-            localStorage.setItem("shapes", JSON.stringify(shapes));
-            listar_shapes();
         }
 
         function deletar(i){            
