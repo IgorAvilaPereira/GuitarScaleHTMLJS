@@ -55,6 +55,25 @@
             localStorage.setItem("shapes", JSON.stringify([]));
         }
 
+        function editar(i){
+            var vetBotao = document.querySelectorAll("button");
+
+            var shapes = JSON.parse(localStorage.getItem("shapes"));
+            var s = shapes[i];
+            alert("O shape "+s.nome+" receberá a configuração que está em exibição");
+            s.nome = prompt("Novo nome para "+s.nome+"?", s.nome);
+            var shapeNovo = []
+            for (let index = 0; index < vetBotao.length; index++) {
+                if (/*vetBotao[index].innerHTML == "--" ||*/ vetBotao[index].innerHTML == "1" || vetBotao[index].innerHTML == "2" || vetBotao[index].innerHTML == "3" || vetBotao[index].innerHTML == "4") {
+                    shapeNovo.push({ "botao": vetBotao[index].id, "dedo": vetBotao[index].innerHTML, "tonica": vetBotao[index].style.backgroundColor})
+                }
+            }
+            s.shape = shapeNovo;
+            shapes[i] = s;
+            localStorage.setItem("shapes", JSON.stringify(shapes));
+            listar_shapes();
+        }
+
         function deletar(i){            
             var shapes = JSON.parse(localStorage.getItem("shapes"));
             shapes.splice(i, 1);
@@ -66,7 +85,7 @@
             // reiniciar();
             var shapeDuplicado = JSON.parse(localStorage.getItem("shapes"))[i];         
             var shapes = JSON.parse(localStorage.getItem("shapes"));
-            shapes.push({ "nome": prompt("novo nome"), "shape": shapeDuplicado.shape});
+            shapes.push({ "nome": prompt("novo nome", shapeDuplicado.nome+"_duplicado"), "shape": shapeDuplicado.shape});
             localStorage.setItem("shapes", JSON.stringify(shapes));               
             listar_shapes();
         }
@@ -93,6 +112,7 @@
                 document.getElementById("lista_shapes").innerHTML += "<button onclick='restaurar("+index+")'>Restaurar</button>";
                 document.getElementById("lista_shapes").innerHTML += "<button onclick='duplicar("+index+")'>Duplicar</button>";
                 document.getElementById("lista_shapes").innerHTML += "<button onclick='deletar("+index+")'>Deletar</button>";
+                document.getElementById("lista_shapes").innerHTML += "<button onclick='editar("+index+")'>Editar</button>";
                 document.getElementById("lista_shapes").innerHTML += "<hr>";
             }
         }
