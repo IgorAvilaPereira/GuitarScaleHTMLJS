@@ -146,19 +146,21 @@
         }
         function define(id) {
             var entrada = prompt("Ex:1,red|2,red|3,black|--,gray");
-            if (entrada.length > 0) {
-                if (entrada.split(",").length == 2) {
-                    document.getElementById(id).innerHTML = entrada.split(",")[0];
-                    if (entrada.split(",")[1] == 'black' || entrada.split(",")[1] == 'red' || entrada.split(",")[1] == 'gray') {
-                        document.getElementById(id).style = "background-color: " + entrada.split(",")[1];
+            if (entrada != null && entrada != ""){
+                if (entrada.length > 0) {
+                    if (entrada.split(",").length == 2) {
+                        document.getElementById(id).innerHTML = entrada.split(",")[0];
+                        if (entrada.split(",")[1] == 'black' || entrada.split(",")[1] == 'red' || entrada.split(",")[1] == 'gray') {
+                            document.getElementById(id).style = "background-color: " + entrada.split(",")[1];
+                        } else {
+                            alert("Respeite o formato: Ex: 1,red");
+                        }
                     } else {
-                        alert("erro0");
+                        alert("Respeite o formato: Ex: 1,red");
                     }
                 } else {
-                    alert("erro1");
+                    alert("Respeite o formato: Ex: 1,red");
                 }
-            } else {
-                alert("erro2");
             }
             // } else {
             //     document.getElementById(id).innerHTML = dedo;
