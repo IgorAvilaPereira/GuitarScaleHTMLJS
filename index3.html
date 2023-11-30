@@ -78,7 +78,7 @@
                 var shapes = JSON.parse(document.getElementById("importar").value);                
                 if (shapes.length > 0) {
                     localStorage.setItem("shapes", JSON.stringify(shapes));
-                    alert("Importação realizada!");
+                    alert("Importação realizada!\nSalve a saída de exportação e um lugar seguro e importe em outra máquina quando precisar");
                     document.getElementById("importar").value =  "";
                 } else {
                     alert("erro na importação");
