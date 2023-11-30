@@ -79,6 +79,9 @@
                 if (shapes.length > 0) {
                     localStorage.setItem("shapes", JSON.stringify(shapes));
                     alert("Importação realizada!");
+                    document.getElementById("importar").value =  "";
+                } else {
+                    alert("erro na importação");
                 }
             } catch(e) {
                 alert("erro na importação");
@@ -273,9 +276,9 @@
     <button id="limpa_volta" onclick="limpar_volta()">Limpar</button>
     <button onclick="salvar()">Salvar</button>
     <button onclick="listar_shapes()">Listar</button>
-    <!-- <button id="btn_importar" onclick="importar()">Importar</button>
-    <textarea id="importar"></textarea> -->
-    <button id="btn_exportar" onclick="exportar()">Exportar</button> <hr>
+    <button id="btn_exportar" onclick="exportar()">Exportar</button> 
+    <button id="btn_importar" onclick="importar()">Importar</button> <textarea id="importar"></textarea>
+    <hr>
     <div id="exportar"></div>
 </body>
 </html>
