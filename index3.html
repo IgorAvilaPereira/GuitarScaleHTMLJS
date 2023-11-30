@@ -5,16 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         .button {
-            background-color: gray;
-            /* Green */
+            background-color: gray;            
             border: none;
             color: white;
-            padding: 20px;
+            padding: 15px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
-            font-size: 20 px;
-            margin: 4px 2px;
+            font-size: 10px;
+            margin: 6px 30px 2px;
+            cursor: pointer;
+        }
+
+        .button_white {
+            background-color: white;            
+            border: none;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 10px;
+            margin: 5px 31px 3px;
             cursor: pointer;
         }
 
@@ -43,6 +55,12 @@
             cursor: pointer;
         }
 
+        body {
+            background-image: url("violao3.png");
+            background-repeat: no-repeat;
+            
+        }
+
         /*#conteudo {*/
         /*background-image: url("violao3.png");
             background-repeat: no-repeat;
@@ -53,6 +71,25 @@
         // localStorage.setItem("shapes", JSON.stringify([]));
         if (localStorage.getItem("shapes") == null) {
             localStorage.setItem("shapes", JSON.stringify([]));
+        }
+
+        // function importar(){
+        //     try {
+        //         var shapes = JSON.parse(document.getElementById("importar").value);
+        //         localStorage.setItem("shapes", JSON.stringify(shapes));
+        //     } catch(e) {
+        //         alert("erro na importação");
+        //     }            
+        // }
+
+        function exportar(){
+            document.getElementById("exportar").innerHTML = "";
+            if (document.getElementById("btn_exportar").innerHTML == 'Exportar') {
+                document.getElementById("exportar").innerHTML = localStorage.getItem("shapes");
+                document.getElementById("btn_exportar").innerHTML = 'Limpar Exportar';
+            } else {
+                document.getElementById("btn_exportar").innerHTML = 'Exportar';
+            } 
         }
 
         function editar(i){
@@ -152,17 +189,19 @@
             var vetBotao = document.querySelectorAll("button");
             if (document.getElementById("limpa_volta").innerHTML == 'Limpar') {
                 for (let index = 0; index < vetBotao.length; index++) {
-                    if (vetBotao[index].innerHTML == "--") {
-                        vetBotao[index].innerHTML = "";
-                        vetBotao[index].style = "background-color: white";
+                    if (vetBotao[index].innerHTML == "--") {                        
+                        // vetBotao[index].innerHTML = "";
+                        vetBotao[index].style.backgroundColor = "#F7F0D6";
+                        // vetBotao[index].style.zIndex = "-1000"; 
                     }
                 }
                 document.getElementById("limpa_volta").innerHTML = "Retornar";
             } else {
                 for (let index = 0; index < vetBotao.length; index++) {
-                    if (vetBotao[index].innerHTML == "") {
-                        vetBotao[index].innerHTML = "--";
-                        vetBotao[index].style = "background-color: gray";
+                    if (vetBotao[index].innerHTML == "--") {
+                        // vetBotao[index].innerHTML = "--";
+                        vetBotao[index].style.backgroundColor = "gray";
+                        vetBotao[index].style.color = "white";
                     }
                 }
                 document.getElementById("limpa_volta").innerHTML = "Limpar";
@@ -223,11 +262,17 @@
 </head>
 
 <body onload="inicializar()">
+    <div style="float: left; width: 10px; height: 400px;"></div>
     <div id="conteudo"></div>
-    <div id="lista_shapes"> </div>
+    <br>
+    <div id="lista_shapes"> </div> 
     <button id="reiniciar" onclick="reiniciar()">Reiniciar</button>
     <button id="limpa_volta" onclick="limpar_volta()">Limpar</button>
     <button onclick="salvar()">Salvar</button>
     <button onclick="listar_shapes()">Listar</button>
+    <!-- <button id="btn_importar" onclick="importar()">Importar</button>
+    <textarea id="importar"></textarea> -->
+    <button id="btn_exportar" onclick="exportar()">Exportar</button> <hr>
+    <div id="exportar"></div>
 </body>
 </html>
