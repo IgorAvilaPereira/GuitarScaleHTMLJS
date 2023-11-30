@@ -73,14 +73,17 @@
             localStorage.setItem("shapes", JSON.stringify([]));
         }
 
-        // function importar(){
-        //     try {
-        //         var shapes = JSON.parse(document.getElementById("importar").value);
-        //         localStorage.setItem("shapes", JSON.stringify(shapes));
-        //     } catch(e) {
-        //         alert("erro na importação");
-        //     }            
-        // }
+        function importar(){
+            try {
+                var shapes = JSON.parse(document.getElementById("importar").value);                
+                if (shapes.length > 0) {
+                    localStorage.setItem("shapes", JSON.stringify(shapes));
+                    alert("Importação realizada!");
+                }
+            } catch(e) {
+                alert("erro na importação");
+            }            
+        }
 
         function exportar(){
             document.getElementById("exportar").innerHTML = "";
