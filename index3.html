@@ -9,15 +9,15 @@
             background-color: gray;
             border: none;
             color: white;
-            padding: 15px;
+            padding: 8px;
             text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 10px;
-            margin: 6px 30px 2px;
+            font-size: 8px;
+            margin: 5px 40px 1px;
             cursor: pointer;
+            border-radius: 50%;
         }
 
+            /*
         .button_white {
             background-color: white;
             border: none;
@@ -29,8 +29,9 @@
             font-size: 10px;
             margin: 5px 31px 3px;
             cursor: pointer;
-        }
+        }*/
 
+        /*
         .button1 {
             border-radius: 2px;
         }
@@ -45,19 +46,18 @@
 
         .button4 {
             border-radius: 12px;
-        }
-
+        }*/
+        /*
         .button5 {
-            border-radius: 50%;
-            /*padding: 20px;*/
-        }
+            border-radius: 50%;           
+        }*/
 
         * {
             cursor: pointer;
         }
 
         body {
-            background-image: url("violao3.png");
+            background-image: url("violao.jpg");
             background-repeat: no-repeat;
 
         }
@@ -324,13 +324,14 @@
         function inicializar() {
             var cordas = 42;
             var aux = 1;
+            
             for (let index = 1; index <= 42; index++) {
                 if (aux == 7) {
-                    document.querySelector("#conteudo").innerHTML += "<button id=\"" + index + "\" class=\"button button5\" onclick=\"define(" + index + ")\">--</button><br>";
+                    document.querySelector("#conteudo").innerHTML += "<button id=\"" + index + "\" class=\"button\" onclick=\"define(" + index + ")\">--</button><br>";
                     aux = 1;
                 }
                 else {
-                    document.querySelector("#conteudo").innerHTML += "<button id=\"" + index + "\" class=\"button button5\" onclick=\"define(" + index + ")\">--</button>";
+                    document.querySelector("#conteudo").innerHTML += "<button id=\"" + index + "\" class=\"button\" onclick=\"define(" + index + ")\">--</button>";
                     aux++;
                 }
             }
@@ -365,7 +366,7 @@
 </head>
 
 <body onload="inicializar()">    
-    <div style="float: left; width: 10px; height: 400px;"></div>
+    <div style="float: left; width: 15px; height: 400px;"></div>
     <div id="conteudo"></div>
     <br>    
     <button id="reiniciar" onclick="reiniciar()"  class="btn btn-primary">Reiniciar</button>
@@ -377,7 +378,7 @@
     <hr>
     <div id="exportar"></div> 
     <hr>
-    <div id="lista_shapes"> </div>
+    <div id="lista_shapes"></div>
     <button id="btn_desativa_imprimir" onclick="desativa_imprimir()" style="display:none">Voltar</button>
     <button id="btn_imprimir" onclick="imprimir_mesmo()" style="display:none">Imprimir</button>    
 </body>
