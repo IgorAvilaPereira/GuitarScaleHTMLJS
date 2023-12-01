@@ -148,13 +148,36 @@
         }
 
         //  bug
-        function imprimir(){            
-            var checkboxes = document.getElementsByName("checkbox_shapes");
+        function imprimir(i){           
+            restaurar(i);
+            document.getElementById("reiniciar").style.display = "none";
+            document.getElementById("limpa_volta").style.display = "none";
+            document.getElementById("salvar").style.display = "none";
+            document.getElementById("listar").style.display = "none";
+            document.getElementById("btn_exportar").style.display = "none";
+            document.getElementById("btn_importar").style.display = "none";
+            document.getElementById("importar").style.display = "none";
+            document.getElementById("exportar").style.display = "none";
+            document.getElementById("lista_shapes").style.display = "none";
+            document.getElementById("btn_imprimir").style.display = "";
+            document.getElementById("btn_desativa_imprimir").style.display = "";
+            // window.print();
+
+                      
+     
+            // var s = JSON.parse(localStorage.getItem("shapes"))[0];
+
+            // for (let index = 0; index < s.shape.length; index++) {
+            //     document.getElementById(s.shape[index].botao).innerHTML = s.shape[index].dedo;
+            //     document.getElementById(s.shape[index].botao).style.backgroundColor = s.shape[index].tonica;
+            // }
+
+            // var checkboxes = document.getElementsByName("checkbox_shapes");
             // var markedCheckbox = document.getElementsByName('pl');
-            for (var checkbox of checkboxes) {
-                if (checkbox.checked)
-                    document.body.append(checkbox.value + ' ');
-            }
+            // for (var checkbox of checkboxes) {
+            //     if (checkbox.checked)
+            //         document.body.append(checkbox.value + ' ');
+            // }
         }
 
         function listar_shapes() {
@@ -166,6 +189,7 @@
                 document.getElementById("lista_shapes").innerHTML += "<button class=\"btn btn-secondary\"onclick='duplicar(" + index + ")'>Duplicar</button>";
                 document.getElementById("lista_shapes").innerHTML += "<button class=\"btn btn-sucess\" onclick='deletar(" + index + ")'>Deletar</button>";
                 document.getElementById("lista_shapes").innerHTML += "<button class=\"btn btn-primary\" onclick='editar(" + index + ")'>Editar</button> ";
+                document.getElementById("lista_shapes").innerHTML += "<button class=\"btn btn-sucess\" onclick='imprimir("+index+")'>Imprimir</button>";
                 // document.getElementById("lista_shapes").innerHTML += " <input type='checkbox' name='checkbox_shapes[]' value='"+index+"'>  ";
                 document.getElementById("lista_shapes").innerHTML += s.nome + "<br>";
                 for (let index1 = 0; index1 < s.shape.length; index1++) {
@@ -311,24 +335,50 @@
                 }
             }
         }
+
+        function desativa_imprimir(){
+            document.getElementById("reiniciar").style.display = "";
+            document.getElementById("limpa_volta").style.display = "";
+            document.getElementById("salvar").style.display = "";
+            document.getElementById("listar").style.display = "";
+            document.getElementById("btn_exportar").style.display = "";
+            document.getElementById("btn_importar").style.display = "";
+            document.getElementById("importar").style.display = "";
+            document.getElementById("exportar").style.display = "";
+            document.getElementById("lista_shapes").style.display = "";
+            document.getElementById("btn_imprimir").style.display = "none";
+            document.getElementById("btn_desativa_imprimir").style.display = "none";
+        }
+
+        window.addEventListener("afterprint", (event) => {
+            document.getElementById("btn_imprimir").style.display = "";
+            document.getElementById("btn_desativa_imprimir").style.display = "";   
+        });
+
+
+        function imprimir_mesmo(){
+            document.getElementById("btn_imprimir").style.display = "none";
+            document.getElementById("btn_desativa_imprimir").style.display = "none";                   
+            window.print();            
+        }
     </script>
 </head>
 
-<body onload="inicializar()">
+<body onload="inicializar()">    
     <div style="float: left; width: 10px; height: 400px;"></div>
     <div id="conteudo"></div>
     <br>    
     <button id="reiniciar" onclick="reiniciar()"  class="btn btn-primary">Reiniciar</button>
     <button id="limpa_volta" onclick="limpar_volta()" class="btn btn-secondary">Limpar</button>
-    <button onclick="salvar()" class="btn btn-success" class="btn btn-info">Salvar</button>
-    <button onclick="listar_shapes()" class="btn btn-warning" class="btn btn-info">Listar</button>
-    <!-- <button onclick="imprimir()" class="btn btn-warning" class="btn btn-info">Imprimir</button> -->
+    <button id="salvar" onclick="salvar()" class="btn btn-success" class="btn btn-info">Salvar</button>
+    <button id="listar" onclick="listar_shapes()" class="btn btn-warning" class="btn btn-info">Listar</button>    
     <button id="btn_exportar" onclick="exportar()" class="btn btn-info">Exportar</button>
     <button id="btn_importar" onclick="importar()" class="btn btn-info">Importar</button> <textarea id="importar"></textarea>
     <hr>
     <div id="exportar"></div> 
     <hr>
     <div id="lista_shapes"> </div>
+    <button id="btn_desativa_imprimir" onclick="desativa_imprimir()" style="display:none">Voltar</button>
+    <button id="btn_imprimir" onclick="imprimir_mesmo()" style="display:none">Imprimir</button>    
 </body>
-
 </html>
