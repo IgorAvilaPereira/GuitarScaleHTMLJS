@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         .button {
-            background-color: gray;            
+            background-color: gray;
             border: none;
             color: white;
             padding: 15px;
@@ -18,7 +18,7 @@
         }
 
         .button_white {
-            background-color: white;            
+            background-color: white;
             border: none;
             color: white;
             padding: 15px;
@@ -58,7 +58,7 @@
         body {
             background-image: url("violao3.png");
             background-repeat: no-repeat;
-            
+
         }
 
         /*#conteudo {*/
@@ -73,43 +73,43 @@
             localStorage.setItem("shapes", JSON.stringify([]));
         }
 
-        function importar(){
+        function importar() {
             try {
-                var shapes = JSON.parse(document.getElementById("importar").value);                
+                var shapes = JSON.parse(document.getElementById("importar").value);
                 if (shapes.length > 0) {
                     localStorage.setItem("shapes", JSON.stringify(shapes));
                     alert("Importação realizada!\nSalve a saída de exportação e um lugar seguro e importe em outra máquina quando precisar");
-                    document.getElementById("importar").value =  "";
+                    document.getElementById("importar").value = "";
                 } else {
                     alert("erro na importação");
                 }
-            } catch(e) {
+            } catch (e) {
                 alert("erro na importação");
-            }            
+            }
         }
 
-        function exportar(){
+        function exportar() {
             document.getElementById("exportar").innerHTML = "";
             if (document.getElementById("btn_exportar").innerHTML == 'Exportar') {
                 document.getElementById("exportar").innerHTML = localStorage.getItem("shapes");
                 document.getElementById("btn_exportar").innerHTML = 'Limpar Exportar';
             } else {
                 document.getElementById("btn_exportar").innerHTML = 'Exportar';
-            } 
+            }
         }
 
-        function editar(i){
+        function editar(i) {
             var vetBotao = document.querySelectorAll("button");
 
             var shapes = JSON.parse(localStorage.getItem("shapes"));
             var s = shapes[i];
-            alert("O shape "+s.nome+" receberá a configuração que está em exibição");
-            s.nome = prompt("Novo nome para "+s.nome+"?", s.nome);
-            if (s.nome != ""){
+            alert("O shape " + s.nome + " receberá a configuração que está em exibição");
+            s.nome = prompt("Novo nome para " + s.nome + "?", s.nome);
+            if (s.nome != "") {
                 var shapeNovo = []
                 for (let index = 0; index < vetBotao.length; index++) {
                     if (/*vetBotao[index].innerHTML == "--" ||*/ vetBotao[index].innerHTML == "1" || vetBotao[index].innerHTML == "2" || vetBotao[index].innerHTML == "3" || vetBotao[index].innerHTML == "4") {
-                        shapeNovo.push({ "botao": vetBotao[index].id, "dedo": vetBotao[index].innerHTML, "tonica": vetBotao[index].style.backgroundColor})
+                        shapeNovo.push({ "botao": vetBotao[index].id, "dedo": vetBotao[index].innerHTML, "tonica": vetBotao[index].style.backgroundColor })
                     }
                 }
                 s.shape = shapeNovo;
@@ -121,28 +121,28 @@
             }
         }
 
-        function deletar(i){            
+        function deletar(i) {
             var shapes = JSON.parse(localStorage.getItem("shapes"));
             shapes.splice(i, 1);
             localStorage.setItem("shapes", JSON.stringify(shapes));
             listar_shapes();
         }
 
-        function duplicar(i){
+        function duplicar(i) {
             // reiniciar();
-            var shapeDuplicado = JSON.parse(localStorage.getItem("shapes"))[i];         
+            var shapeDuplicado = JSON.parse(localStorage.getItem("shapes"))[i];
             var shapes = JSON.parse(localStorage.getItem("shapes"));
-            shapes.push({ "nome": prompt("novo nome", shapeDuplicado.nome+"_duplicado"), "shape": shapeDuplicado.shape});
-            localStorage.setItem("shapes", JSON.stringify(shapes));               
+            shapes.push({ "nome": prompt("novo nome", shapeDuplicado.nome + "_duplicado"), "shape": shapeDuplicado.shape });
+            localStorage.setItem("shapes", JSON.stringify(shapes));
             listar_shapes();
         }
 
-        function restaurar(i){
+        function restaurar(i) {
             reiniciar();
-            var s = JSON.parse(localStorage.getItem("shapes"))[i];                        
-            for (let index = 0; index < s.shape.length; index++) {         
+            var s = JSON.parse(localStorage.getItem("shapes"))[i];
+            for (let index = 0; index < s.shape.length; index++) {
                 document.getElementById(s.shape[index].botao).innerHTML = s.shape[index].dedo;
-                document.getElementById(s.shape[index].botao).style.backgroundColor = s.shape[index].tonica;                
+                document.getElementById(s.shape[index].botao).style.backgroundColor = s.shape[index].tonica;
             }
         }
 
@@ -156,10 +156,10 @@
                     var b = s.shape[index1];
                     document.getElementById("lista_shapes").innerHTML += "*" + b.botao + ";" + b.dedo + "<br>";
                 }
-                document.getElementById("lista_shapes").innerHTML += "<button onclick='restaurar("+index+")'>Restaurar</button>";
-                document.getElementById("lista_shapes").innerHTML += "<button onclick='duplicar("+index+")'>Duplicar</button>";
-                document.getElementById("lista_shapes").innerHTML += "<button onclick='deletar("+index+")'>Deletar</button>";
-                document.getElementById("lista_shapes").innerHTML += "<button onclick='editar("+index+")'>Editar</button>";
+                document.getElementById("lista_shapes").innerHTML += "<button onclick='restaurar(" + index + ")'>Restaurar</button>";
+                document.getElementById("lista_shapes").innerHTML += "<button onclick='duplicar(" + index + ")'>Duplicar</button>";
+                document.getElementById("lista_shapes").innerHTML += "<button onclick='deletar(" + index + ")'>Deletar</button>";
+                document.getElementById("lista_shapes").innerHTML += "<button onclick='editar(" + index + ")'>Editar</button>";
                 document.getElementById("lista_shapes").innerHTML += "<hr>";
             }
         }
@@ -170,7 +170,7 @@
             var shapeNovo = []
             for (let index = 0; index < vetBotao.length; index++) {
                 if (/*vetBotao[index].innerHTML == "--" ||*/ vetBotao[index].innerHTML == "1" || vetBotao[index].innerHTML == "2" || vetBotao[index].innerHTML == "3" || vetBotao[index].innerHTML == "4") {
-                    shapeNovo.push({ "botao": vetBotao[index].id, "dedo": vetBotao[index].innerHTML, "tonica": vetBotao[index].style.backgroundColor})
+                    shapeNovo.push({ "botao": vetBotao[index].id, "dedo": vetBotao[index].innerHTML, "tonica": vetBotao[index].style.backgroundColor })
                 }
             }
             if (shapeNovo.length > 0) {
@@ -195,10 +195,10 @@
             var vetBotao = document.querySelectorAll("button");
             if (document.getElementById("limpa_volta").innerHTML == 'Limpar') {
                 for (let index = 0; index < vetBotao.length; index++) {
-                    if (vetBotao[index].innerHTML == "--") {                        
+                    if (vetBotao[index].innerHTML == "--") {
                         // vetBotao[index].innerHTML = "";
                         vetBotao[index].style.backgroundColor = "#F7F0D6";
-                        vetBotao[index].style.zIndex = -110; 
+                        vetBotao[index].style.zIndex = -110;
                     }
                 }
                 document.getElementById("limpa_volta").innerHTML = "Retornar";
@@ -214,8 +214,42 @@
             }
         }
         function define(id) {
+            alert(document.getElementById(id).style.backgroundColor);
+            if (document.getElementById(id).innerHTML == "--" && document.getElementById(id).style.backgroundColor == "") {
+                document.getElementById(id).innerHTML = "1";
+                document.getElementById(id).style.color = "white";
+                document.getElementById(id).style.backgroundColor = "black";
+            } else if (document.getElementById(id).innerHTML == "1" && document.getElementById(id).style.backgroundColor == "black") {
+                document.getElementById(id).style.color = "white";
+                document.getElementById(id).style.backgroundColor = "red";
+            } else if (document.getElementById(id).innerHTML == "1" && document.getElementById(id).style.backgroundColor == "red") {
+                document.getElementById(id).innerHTML = "2";
+                document.getElementById(id).style.color = "white";
+                document.getElementById(id).style.backgroundColor = "black";
+            } else if (document.getElementById(id).innerHTML == "2" && document.getElementById(id).style.backgroundColor == "black") {
+                document.getElementById(id).style.color = "white";
+                document.getElementById(id).style.backgroundColor = "red";
+            } else if (document.getElementById(id).innerHTML == "2" && document.getElementById(id).style.backgroundColor == "red") {
+                document.getElementById(id).innerHTML = "3";
+                document.getElementById(id).style.color = "white";
+                document.getElementById(id).style.backgroundColor = "black";
+            } else if (document.getElementById(id).innerHTML == "3" && document.getElementById(id).style.backgroundColor == "black") {
+                document.getElementById(id).style.color = "white";
+                document.getElementById(id).style.backgroundColor = "red";
+            } else if (document.getElementById(id).innerHTML == "3" && document.getElementById(id).style.backgroundColor == "red") {
+                document.getElementById(id).innerHTML = "4";
+                document.getElementById(id).style.color = "white";
+                document.getElementById(id).style.backgroundColor = "black";
+            } else if (document.getElementById(id).innerHTML == "4" && document.getElementById(id).style.backgroundColor == "black") {
+                document.getElementById(id).style.color = "white";
+                document.getElementById(id).style.backgroundColor = "red";
+            } else if (document.getElementById(id).innerHTML == "4" && document.getElementById(id).style.backgroundColor == "red") {
+                document.getElementById(id).innerHTML = "--";
+                document.getElementById(id).style.backgroundColor = "";
+            }
+            /*
             var entrada = prompt("Ex:1,red|2,red|3,black|--,gray", "1,black");
-            if (entrada != null && entrada != ""){
+            if (entrada != null && entrada != "") {
                 if (entrada.length > 0) {
                     if (entrada.split(",").length == 2) {
                         document.getElementById(id).innerHTML = entrada.split(",")[0];
@@ -230,7 +264,8 @@
                 } else {
                     alert("Respeite o formato: Ex: 1,red");
                 }
-            }
+            }*/
+
             // } else {
             //     document.getElementById(id).innerHTML = dedo;
             //     document.getElementById(id).style = "background-color: black";
@@ -271,14 +306,15 @@
     <div style="float: left; width: 10px; height: 400px;"></div>
     <div id="conteudo"></div>
     <br>
-    <div id="lista_shapes"> </div> 
+    <div id="lista_shapes"> </div>
     <button id="reiniciar" onclick="reiniciar()">Reiniciar</button>
     <button id="limpa_volta" onclick="limpar_volta()">Limpar</button>
     <button onclick="salvar()">Salvar</button>
     <button onclick="listar_shapes()">Listar</button>
-    <button id="btn_exportar" onclick="exportar()">Exportar</button> 
+    <button id="btn_exportar" onclick="exportar()">Exportar</button>
     <button id="btn_importar" onclick="importar()">Importar</button> <textarea id="importar"></textarea>
     <hr>
     <div id="exportar"></div>
 </body>
+
 </html>
