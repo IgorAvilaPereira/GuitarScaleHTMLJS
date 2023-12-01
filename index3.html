@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         .button {
@@ -146,20 +147,31 @@
             }
         }
 
+        //  bug
+        function imprimir(){            
+            var checkboxes = document.getElementsByName("checkbox_shapes");
+            // var markedCheckbox = document.getElementsByName('pl');
+            for (var checkbox of checkboxes) {
+                if (checkbox.checked)
+                    document.body.append(checkbox.value + ' ');
+            }
+        }
+
         function listar_shapes() {
             document.getElementById("lista_shapes").innerHTML = "";
             var shapes = JSON.parse(localStorage.getItem("shapes"));
             for (let index = 0; index < shapes.length; index++) {
                 var s = shapes[index];
+                document.getElementById("lista_shapes").innerHTML += "<button class=\"btn btn-info\" onclick='restaurar(" + index + ")'>Restaurar</button>";
+                document.getElementById("lista_shapes").innerHTML += "<button class=\"btn btn-secondary\"onclick='duplicar(" + index + ")'>Duplicar</button>";
+                document.getElementById("lista_shapes").innerHTML += "<button class=\"btn btn-sucess\" onclick='deletar(" + index + ")'>Deletar</button>";
+                document.getElementById("lista_shapes").innerHTML += "<button class=\"btn btn-primary\" onclick='editar(" + index + ")'>Editar</button> ";
+                document.getElementById("lista_shapes").innerHTML += " <input type='checkbox' name='checkbox_shapes[]' value='"+index+"'>  ";
                 document.getElementById("lista_shapes").innerHTML += s.nome + "<br>";
                 for (let index1 = 0; index1 < s.shape.length; index1++) {
                     var b = s.shape[index1];
-                    document.getElementById("lista_shapes").innerHTML += "*" + b.botao + ";" + b.dedo + "<br>";
-                }
-                document.getElementById("lista_shapes").innerHTML += "<button onclick='restaurar(" + index + ")'>Restaurar</button>";
-                document.getElementById("lista_shapes").innerHTML += "<button onclick='duplicar(" + index + ")'>Duplicar</button>";
-                document.getElementById("lista_shapes").innerHTML += "<button onclick='deletar(" + index + ")'>Deletar</button>";
-                document.getElementById("lista_shapes").innerHTML += "<button onclick='editar(" + index + ")'>Editar</button>";
+                    // document.getElementById("lista_shapes").innerHTML += "*" + b.botao + ";" + b.dedo + "<br>";
+                }                
                 document.getElementById("lista_shapes").innerHTML += "<hr>";
             }
         }
@@ -305,16 +317,18 @@
 <body onload="inicializar()">
     <div style="float: left; width: 10px; height: 400px;"></div>
     <div id="conteudo"></div>
-    <br>
-    <div id="lista_shapes"> </div>
-    <button id="reiniciar" onclick="reiniciar()">Reiniciar</button>
-    <button id="limpa_volta" onclick="limpar_volta()">Limpar</button>
-    <button onclick="salvar()">Salvar</button>
-    <button onclick="listar_shapes()">Listar</button>
-    <button id="btn_exportar" onclick="exportar()">Exportar</button>
-    <button id="btn_importar" onclick="importar()">Importar</button> <textarea id="importar"></textarea>
+    <br>    
+    <button id="reiniciar" onclick="reiniciar()"  class="btn btn-primary">Reiniciar</button>
+    <button id="limpa_volta" onclick="limpar_volta()" class="btn btn-secondary">Limpar</button>
+    <button onclick="salvar()" class="btn btn-success" class="btn btn-info">Salvar</button>
+    <button onclick="listar_shapes()" class="btn btn-warning" class="btn btn-info">Listar</button>
+    <button onclick="imprimir()" class="btn btn-warning" class="btn btn-info">Imprimir</button>
+    <button id="btn_exportar" onclick="exportar()" class="btn btn-info">Exportar</button>
+    <button id="btn_importar" onclick="importar()" class="btn btn-info">Importar</button> <textarea id="importar"></textarea>
     <hr>
-    <div id="exportar"></div>
+    <div id="exportar"></div> 
+    <hr>
+    <div id="lista_shapes"> </div>
 </body>
 
 </html>
