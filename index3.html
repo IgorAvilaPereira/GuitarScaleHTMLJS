@@ -69,10 +69,16 @@
         /*}*/
     </style>
     <script>
-        // localStorage.setItem("shapes", JSON.stringify([]));
-        if (localStorage.getItem("shapes") == null) {
-            localStorage.setItem("shapes", JSON.stringify([]));
-        }
+        // localStorage.clear();
+        // alert(localStorage.getItem("shapes") === null);
+        if (localStorage.getItem("shapes") === null) {            
+            localStorage.setItem("shapes", JSON.stringify([{"nome":"Escala Menor Natural - Shape C","shape":[{"botao":"3","dedo":"1","tonica":"black"},{"botao":"5","dedo":"3","tonica":"black"},{"botao":"6","dedo":"4","tonica":"black"},{"botao":"10","dedo":"1","tonica":"red"},{"botao":"12","dedo":"3","tonica":"black"},{"botao":"13","dedo":"4","tonica":"black"},{"botao":"16","dedo":"1","tonica":"black"},{"botao":"17","dedo":"2","tonica":"black"},{"botao":"19","dedo":"4","tonica":"black"},{"botao":"23","dedo":"1","tonica":"black"},{"botao":"24","dedo":"2","tonica":"black"},{"botao":"26","dedo":"4","tonica":"black"},{"botao":"33","dedo":"4","tonica":"red"}]},{"nome":"Escala Menor Natural - Shape A","shape":[{"botao":"2","dedo":"1","tonica":"black"},{"botao":"3","dedo":"2","tonica":"black"},{"botao":"5","dedo":"4","tonica":"black"},{"botao":"9","dedo":"1","tonica":"black"},{"botao":"10","dedo":"2","tonica":"black"},{"botao":"12","dedo":"4","tonica":"black"},{"botao":"16","dedo":"1","tonica":"black"},{"botao":"18","dedo":"3","tonica":"red"},{"botao":"23","dedo":"1","tonica":"black"},{"botao":"25","dedo":"3","tonica":"black"},{"botao":"26","dedo":"4","tonica":"black"},{"botao":"30","dedo":"1","tonica":"red"},{"botao":"32","dedo":"3","tonica":"black"},{"botao":"33","dedo":"4","tonica":"black"}]}]));
+            
+        } /*else {
+            if (localStorage.getItem("shapes").length == 0) {
+                localStorage.setItem("shapes", JSON.stringify([{"nome":"Escala Menor Natural - Shape C","shape":[{"botao":"3","dedo":"1","tonica":"black"},{"botao":"5","dedo":"3","tonica":"black"},{"botao":"6","dedo":"4","tonica":"black"},{"botao":"10","dedo":"1","tonica":"red"},{"botao":"12","dedo":"3","tonica":"black"},{"botao":"13","dedo":"4","tonica":"black"},{"botao":"16","dedo":"1","tonica":"black"},{"botao":"17","dedo":"2","tonica":"black"},{"botao":"19","dedo":"4","tonica":"black"},{"botao":"23","dedo":"1","tonica":"black"},{"botao":"24","dedo":"2","tonica":"black"},{"botao":"26","dedo":"4","tonica":"black"},{"botao":"33","dedo":"4","tonica":"red"}]},{"nome":"Escala Menor Natural - Shape A","shape":[{"botao":"2","dedo":"1","tonica":"black"},{"botao":"3","dedo":"2","tonica":"black"},{"botao":"5","dedo":"4","tonica":"black"},{"botao":"9","dedo":"1","tonica":"black"},{"botao":"10","dedo":"2","tonica":"black"},{"botao":"12","dedo":"4","tonica":"black"},{"botao":"16","dedo":"1","tonica":"black"},{"botao":"18","dedo":"3","tonica":"red"},{"botao":"23","dedo":"1","tonica":"black"},{"botao":"25","dedo":"3","tonica":"black"},{"botao":"26","dedo":"4","tonica":"black"},{"botao":"30","dedo":"1","tonica":"red"},{"botao":"32","dedo":"3","tonica":"black"},{"botao":"33","dedo":"4","tonica":"black"}]}]));
+            }
+        }*/
 
         function importar() {
             try {
