@@ -223,14 +223,15 @@
             }
         }
         function reiniciar() {
-            var vetBotao = document.querySelectorAll("button");
-            for (let index = 0; index < vetBotao.length; index++) {
-                if (/*vetBotao[index].innerHTML == "--" ||*/ vetBotao[index].innerHTML == "1" || vetBotao[index].innerHTML == "2" || vetBotao[index].innerHTML == "3" || vetBotao[index].innerHTML == "4") {
-                    vetBotao[index].innerHTML = "--";
-                    vetBotao[index].style.backgroundColor = "gray";
-                    vetBotao[index].style.color = "white";
-                }
-            }
+            inicializar();
+            // var vetBotao = document.querySelectorAll("button");
+            // for (let index = 0; index < vetBotao.length; index++) {
+            //     if (vetBotao[index].innerHTML.trim() == "--" || vetBotao[index].innerHTML.trim() == "1" || vetBotao[index].innerHTML.trim() == "2" || vetBotao[index].innerHTML.trim() == "3" || vetBotao[index].innerHTML.trim() == "4") {
+            //         vetBotao[index].innerHTML = "--";
+            //         vetBotao[index].style.backgroundColor = "gray";
+            //         vetBotao[index].style.color = "white";
+            //     }
+            // }
         }
         // bug 
         function limpar_volta() {
@@ -330,6 +331,7 @@
         function inicializar() {
             var cordas = 42;
             var aux = 1;
+            document.querySelector("#conteudo").innerHTML = "";
             
             for (let index = 1; index <= 42; index++) {
                 if (aux == 7) {
