@@ -156,6 +156,7 @@
        
         function imprimir(i){           
             restaurar(i);
+            limpar_volta();        
             document.getElementById("reiniciar").style.display = "none";
             document.getElementById("limpa_volta").style.display = "none";
             document.getElementById("salvar").style.display = "none";
@@ -233,24 +234,24 @@
             //     }
             // }
         }
-        // bug 
         function limpar_volta() {
             var vetBotao = document.querySelectorAll("button");
             if (document.getElementById("limpa_volta").innerHTML == 'Limpar') {
                 for (let index = 0; index < vetBotao.length; index++) {
                     if (vetBotao[index].innerHTML == "--") {
                         // vetBotao[index].innerHTML = "";
-                        vetBotao[index].style.backgroundColor = "#F7F0D6";
-                        vetBotao[index].style.zIndex = -110;
+                        // vetBotao[index].style.backgroundColor = "#F7F0D6";
+                        vetBotao[index].style.zIndex = -1;
                     }
                 }
                 document.getElementById("limpa_volta").innerHTML = "Retornar";
             } else {
                 for (let index = 0; index < vetBotao.length; index++) {
                     if (vetBotao[index].innerHTML == "--") {
+                        vetBotao[index].style.zIndex = 1;
                         // vetBotao[index].innerHTML = "--";
-                        vetBotao[index].style.backgroundColor = "gray";
-                        vetBotao[index].style.color = "white";
+                        // vetBotao[index].style.backgroundColor = "gray";
+                        // vetBotao[index].style.color = "white";
                     }
                 }
                 document.getElementById("limpa_volta").innerHTML = "Limpar";
@@ -329,23 +330,32 @@
 
         }
         function inicializar() {
-            var cordas = 42;
-            var aux = 1;
-            document.querySelector("#conteudo").innerHTML = "";
-            
-            for (let index = 1; index <= 42; index++) {
-                if (aux == 7) {
-                    document.querySelector("#conteudo").innerHTML += "<button id=\"" + index + "\" class=\"button\" onclick=\"define(" + index + ")\">--</button><br>";
-                    aux = 1;
-                }
-                else {
-                    document.querySelector("#conteudo").innerHTML += "<button id=\"" + index + "\" class=\"button\" onclick=\"define(" + index + ")\">--</button>";
-                    aux++;
+            var vetBotao = document.querySelectorAll("button");
+            for (let index = 0; index < vetBotao.length; index++) {
+                if (vetBotao[index].innerHTML == "--" || vetBotao[index].innerHTML == "1" || vetBotao[index].innerHTML == "2" || vetBotao[index].innerHTML == "3" || vetBotao[index].innerHTML == "4") {
+                    vetBotao[index].innerHTML = "--";
+                    vetBotao[index].style.backgroundColor = "";
+                    vetBotao[index].style.zIndex = 1;
                 }
             }
+
+            // var cordas = 42;
+            // var aux = 1;
+            // document.querySelector("#conteudo").innerHTML = "";
+            
+            // for (let index = 1; index <= 42; index++) {
+            //     if (aux == 7) {
+            //         document.querySelector("#conteudo").innerHTML += "<button id=\"" + index + "\" class=\"button\" onclick=\"define(" + index + ")\">--</button><br>";
+            //         aux = 1;
+            //     }
+            //     else {
+            //         document.querySelector("#conteudo").innerHTML += "<button id=\"" + index + "\" class=\"button\" onclick=\"define(" + index + ")\">--</button>";
+            //         aux++;
+            //     }
+            // }
         }
 
-        function desativa_imprimir(){
+        function desativa_imprimir(){                                    
             document.getElementById("reiniciar").style.display = "";
             document.getElementById("limpa_volta").style.display = "";
             document.getElementById("salvar").style.display = "";
@@ -359,13 +369,14 @@
             document.getElementById("btn_desativa_imprimir").style.display = "none";
         }
 
-        window.addEventListener("afterprint", (event) => {
+        window.addEventListener("afterprint", (event) => {            
             document.getElementById("btn_imprimir").style.display = "";
             document.getElementById("btn_desativa_imprimir").style.display = "";   
         });
 
 
-        function imprimir_mesmo(){
+        function imprimir_mesmo(){            
+              
             document.getElementById("btn_imprimir").style.display = "none";
             document.getElementById("btn_desativa_imprimir").style.display = "none";                   
             window.print();            
@@ -373,10 +384,60 @@
     </script>
 </head>
 
-<body onload="inicializar()">    
-    <div style="float: left; width: 15px; height: 400px;"></div>
-    <div id="conteudo"></div>
-    <br>    
+<body>    
+    <!-- <div style="float: left; width: 15px; height: 400px;"></div> -->
+    <!-- <div id="conteudo"></div> -->
+    <div>
+        <img src="violao.jpg">
+        <button id="1" class="button" style="position: absolute; left: 10px; z-index: 1;" onclick="define(1)">--</button>
+        <button id="2" class="button" style="position: absolute; left: 105px; z-index: 1;" onclick="define(2)">--</button>
+        <button id="3" class="button" style="position: absolute; left: 230px; z-index: 1;" onclick="define(3)">--</button>
+        <button id="4" class="button" style="position: absolute; left: 330px; z-index: 1;" onclick="define(4)">--</button>
+        <button id="5" class="button" style="position: absolute; left: 430px; z-index: 1;" onclick="define(5)">--</button>
+        <button id="6" class="button" style="position: absolute; left: 530px; z-index: 1;" onclick="define(6)">--</button>
+        <button id="7" class="button" style="position: absolute; left: 630px; z-index: 1;" onclick="define(7)">--</button><br> 
+
+        <button id="8" class="button" style="position: absolute; top:30px; left: 10px; z-index: 1;" onclick="define(8)">--</button>
+        <button id="9" class="button" style="position: absolute; top:30px; left: 105px; z-index: 1;" onclick="define(9)">--</button>
+        <button id="10" class="button" style="position: absolute; top:30px; left: 230px; z-index: 1;" onclick="define(10)">--</button>
+        <button id="11" class="button" style="position: absolute; top:30px; left: 330px; z-index: 1;" onclick="define(11)">--</button>
+        <button id="12" class="button" style="position: absolute; top:30px; left: 430px; z-index: 1;" onclick="define(12)">--</button>
+        <button id="13" class="button" style="position: absolute; top:30px; left: 530px; z-index: 1;" onclick="define(13)">--</button>
+        <button id="14" class="button" style="position: absolute; top:30px; left: 630px; z-index: 1;" onclick="define(14)">--</button><br> 
+
+        <button id="15" class="button" style="position: absolute; top:60px; left: 10px; z-index: 1;" onclick="define(15)">--</button>
+        <button id="16" class="button" style="position: absolute; top:60px; left: 105px; z-index: 1;" onclick="define(16)">--</button>
+        <button id="17" class="button" style="position: absolute; top:60px; left: 230px; z-index: 1;" onclick="define(17)">--</button>
+        <button id="18" class="button" style="position: absolute; top:60px; left: 330px; z-index: 1;" onclick="define(18)">--</button>
+        <button id="19" class="button" style="position: absolute; top:60px; left: 430px; z-index: 1;" onclick="define(19)">--</button>
+        <button id="20" class="button" style="position: absolute; top:60px; left: 530px; z-index: 1;" onclick="define(20)">--</button>
+        <button id="21" class="button" style="position: absolute; top:60px; left: 630px; z-index: 1;" onclick="define(21)">--</button><br>
+
+
+        <button id="22" class="button" style="position: absolute; top:95px; left: 10px; z-index: 1;" onclick="define(22)">--</button>
+        <button id="23" class="button" style="position: absolute; top:95px; left: 105px; z-index: 1;" onclick="define(23)">--</button>
+        <button id="24" class="button" style="position: absolute; top:95px; left: 230px; z-index: 1;" onclick="define(24)">--</button>
+        <button id="25" class="button" style="position: absolute; top:95px; left: 330px; z-index: 1;" onclick="define(25)">--</button>
+        <button id="26" class="button" style="position: absolute; top:95px; left: 430px; z-index: 1;" onclick="define(26)">--</button>
+        <button id="27" class="button" style="position: absolute; top:95px; left: 530px; z-index: 1;" onclick="define(27)">--</button>
+        <button id="28" class="button" style="position: absolute; top:95px; left: 630px; z-index: 1;" onclick="define(28)">--</button><br>
+
+        <button id="29" class="button" style="position: absolute; top:130px; left: 10px; z-index: 1;" onclick="define(29)">--</button>
+        <button id="30" class="button" style="position: absolute; top:130px; left: 105px; z-index: 1;" onclick="define(30)">--</button>
+        <button id="31" class="button" style="position: absolute; top:130px; left: 230px; z-index: 1;" onclick="define(31)">--</button>
+        <button id="32" class="button" style="position: absolute; top:130px; left: 330px; z-index: 1;" onclick="define(32)">--</button>
+        <button id="33" class="button" style="position: absolute; top:130px; left: 430px; z-index: 1;" onclick="define(33)">--</button>
+        <button id="34" class="button" style="position: absolute; top:130px; left: 530px; z-index: 1;" onclick="define(34)">--</button>
+        <button id="35" class="button" style="position: absolute; top:130px; left: 630px; z-index: 1;" onclick="define(35)">--</button><br>
+
+        <button id="36" class="button" style="position: absolute; top:170px; left: 10px; z-index: 1;" onclick="define(36)">--</button>
+        <button id="37" class="button" style="position: absolute; top:170px; left: 105px; z-index: 1;" onclick="define(37)">--</button>
+        <button id="38" class="button" style="position: absolute; top:170px; left: 230px; z-index: 1;" onclick="define(38)">--</button>
+        <button id="39" class="button" style="position: absolute; top:170px; left: 330px; z-index: 1;" onclick="define(39)">--</button>
+        <button id="40" class="button" style="position: absolute; top:170px; left: 430px; z-index: 1;" onclick="define(40)">--</button>
+        <button id="41" class="button" style="position: absolute; top:170px; left: 530px; z-index: 1;" onclick="define(41)">--</button>
+        <button id="42" class="button" style="position: absolute; top:170px; left: 630px; z-index: 1;" onclick="define(42)">--</button><br> 
+    </div>
     <button id="reiniciar" onclick="reiniciar()"  class="btn btn-primary">Reiniciar</button>
     <button id="limpa_volta" onclick="limpar_volta()" class="btn btn-secondary">Limpar</button>
     <button id="salvar" onclick="salvar()" class="btn btn-success" class="btn btn-info">Salvar</button>
@@ -388,6 +449,6 @@
     <hr>
     <div id="lista_shapes"></div>
     <button id="btn_desativa_imprimir" onclick="desativa_imprimir()" style="display:none">Voltar</button>
-    <button id="btn_imprimir" onclick="imprimir_mesmo()" style="display:none">Imprimir</button>    
+    <button id="btn_imprimir" onclick="imprimir_mesmo()" style="display:none">Imprimir</button>     
 </body>
 </html>
