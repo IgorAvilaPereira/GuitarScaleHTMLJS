@@ -156,7 +156,14 @@
        
         function imprimir(i){           
             restaurar(i);
-            limpar_volta();        
+            var vetBotao = document.querySelectorAll("button");
+            for (let index = 0; index < vetBotao.length; index++) {
+                if (vetBotao[index].innerHTML == "--") {
+                    vetBotao[index].style.zIndex = -1;
+                }
+            }          
+            document.getElementById("limpa_volta").innerHTML = "Retornar";
+         
             document.getElementById("reiniciar").style.display = "none";
             document.getElementById("limpa_volta").style.display = "none";
             document.getElementById("salvar").style.display = "none";
@@ -239,8 +246,6 @@
             if (document.getElementById("limpa_volta").innerHTML == 'Limpar') {
                 for (let index = 0; index < vetBotao.length; index++) {
                     if (vetBotao[index].innerHTML == "--") {
-                        // vetBotao[index].innerHTML = "";
-                        // vetBotao[index].style.backgroundColor = "#F7F0D6";
                         vetBotao[index].style.zIndex = -1;
                     }
                 }
@@ -249,9 +254,6 @@
                 for (let index = 0; index < vetBotao.length; index++) {
                     if (vetBotao[index].innerHTML == "--") {
                         vetBotao[index].style.zIndex = 1;
-                        // vetBotao[index].innerHTML = "--";
-                        // vetBotao[index].style.backgroundColor = "gray";
-                        // vetBotao[index].style.color = "white";
                     }
                 }
                 document.getElementById("limpa_volta").innerHTML = "Limpar";
@@ -355,7 +357,15 @@
             // }
         }
 
-        function desativa_imprimir(){                                    
+        function desativa_imprimir(){ 
+            var vetBotao = document.querySelectorAll("button");     
+            for (let index = 0; index < vetBotao.length; index++) {
+                if (vetBotao[index].innerHTML == "--") {
+                    vetBotao[index].style.zIndex = 1;
+                }
+            }     
+            document.getElementById("limpa_volta").innerHTML = "Limpar";
+                        
             document.getElementById("reiniciar").style.display = "";
             document.getElementById("limpa_volta").style.display = "";
             document.getElementById("salvar").style.display = "";
@@ -375,8 +385,7 @@
         });
 
 
-        function imprimir_mesmo(){            
-              
+        function imprimir_mesmo(){             
             document.getElementById("btn_imprimir").style.display = "none";
             document.getElementById("btn_desativa_imprimir").style.display = "none";                   
             window.print();            
