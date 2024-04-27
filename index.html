@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .button {
+            background-color: gray;
+            border: none;
+            color: white;
+            padding: 8px;
+            text-align: center;
+            font-size: 8px;
+            margin: 3px 40px 1px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        * {
+            cursor: pointer;
+        }
+
+        table {
+            background-image: url("violao.jpg");
+            /* height: 100%; */
+            background-repeat: no-repeat;
+        }
+
+        td {
+            vertical-align: top;
+        }
+    </style>
+    <script>
+        // localStorage.clear();
+        // alert(localStorage.getItem("shapes") === null);
+        if (localStorage.getItem("shapes") === null) {
+            localStorage.setItem("shapes", JSON.stringify([{ "nome": "Escala Menor Natural - Shape C", "shape": [{ "botao": "3", "dedo": "1", "tonica": "black" }, { "botao": "5", "dedo": "3", "tonica": "black" }, { "botao": "6", "dedo": "4", "tonica": "black" }, { "botao": "10", "dedo": "1", "tonica": "red" }, { "botao": "12", "dedo": "3", "tonica": "black" }, { "botao": "13", "dedo": "4", "tonica": "black" }, { "botao": "16", "dedo": "1", "tonica": "black" }, { "botao": "17", "dedo": "2", "tonica": "black" }, { "botao": "19", "dedo": "4", "tonica": "black" }, { "botao": "23", "dedo": "1", "tonica": "black" }, { "botao": "24", "dedo": "2", "tonica": "black" }, { "botao": "26", "dedo": "4", "tonica": "black" }, { "botao": "33", "dedo": "4", "tonica": "red" }] }, { "nome": "Escala Menor Natural - Shape A", "shape": [{ "botao": "2", "dedo": "1", "tonica": "black" }, { "botao": "3", "dedo": "2", "tonica": "black" }, { "botao": "5", "dedo": "4", "tonica": "black" }, { "botao": "9", "dedo": "1", "tonica": "black" }, { "botao": "10", "dedo": "2", "tonica": "black" }, { "botao": "12", "dedo": "4", "tonica": "black" }, { "botao": "16", "dedo": "1", "tonica": "black" }, { "botao": "18", "dedo": "3", "tonica": "red" }, { "botao": "23", "dedo": "1", "tonica": "black" }, { "botao": "25", "dedo": "3", "tonica": "black" }, { "botao": "26", "dedo": "4", "tonica": "black" }, { "botao": "30", "dedo": "1", "tonica": "red" }, { "botao": "32", "dedo": "3", "tonica": "black" }, { "botao": "33", "dedo": "4", "tonica": "black" }] }, { "nome": "Escala Menor Natural - Shape E", "shape": [{ "botao": "2", "dedo": "1", "tonica": "red" }, { "botao": "4", "dedo": "3", "tonica": "black" }, { "botao": "5", "dedo": "4", "tonica": "black" }, { "botao": "9", "dedo": "1", "tonica": "black" }, { "botao": "10", "dedo": "2", "tonica": "black" }, { "botao": "12", "dedo": "4", "tonica": "black" }, { "botao": "15", "dedo": "1", "tonica": "black" }, { "botao": "16", "dedo": "2", "tonica": "black" }, { "botao": "18", "dedo": "3", "tonica": "black" }, { "botao": "23", "dedo": "1", "tonica": "black" }, { "botao": "25", "dedo": "3", "tonica": "red" }, { "botao": "30", "dedo": "1", "tonica": "black" }, { "botao": "32", "dedo": "3", "tonica": "black" }, { "botao": "33", "dedo": "4", "tonica": "black" }, { "botao": "37", "dedo": "1", "tonica": "red" }, { "botao": "39", "dedo": "3", "tonica": "black" }, { "botao": "40", "dedo": "4", "tonica": "black" }] }]));
+
+        } /*else {
+            if (localStorage.getItem("shapes").length == 0) {
+                localStorage.setItem("shapes", JSON.stringify([{"nome":"Escala Menor Natural - Shape C","shape":[{"botao":"3","dedo":"1","tonica":"black"},{"botao":"5","dedo":"3","tonica":"black"},{"botao":"6","dedo":"4","tonica":"black"},{"botao":"10","dedo":"1","tonica":"red"},{"botao":"12","dedo":"3","tonica":"black"},{"botao":"13","dedo":"4","tonica":"black"},{"botao":"16","dedo":"1","tonica":"black"},{"botao":"17","dedo":"2","tonica":"black"},{"botao":"19","dedo":"4","tonica":"black"},{"botao":"23","dedo":"1","tonica":"black"},{"botao":"24","dedo":"2","tonica":"black"},{"botao":"26","dedo":"4","tonica":"black"},{"botao":"33","dedo":"4","tonica":"red"}]},{"nome":"Escala Menor Natural - Shape A","shape":[{"botao":"2","dedo":"1","tonica":"black"},{"botao":"3","dedo":"2","tonica":"black"},{"botao":"5","dedo":"4","tonica":"black"},{"botao":"9","dedo":"1","tonica":"black"},{"botao":"10","dedo":"2","tonica":"black"},{"botao":"12","dedo":"4","tonica":"black"},{"botao":"16","dedo":"1","tonica":"black"},{"botao":"18","dedo":"3","tonica":"red"},{"botao":"23","dedo":"1","tonica":"black"},{"botao":"25","dedo":"3","tonica":"black"},{"botao":"26","dedo":"4","tonica":"black"},{"botao":"30","dedo":"1","tonica":"red"},{"botao":"32","dedo":"3","tonica":"black"},{"botao":"33","dedo":"4","tonica":"black"}]}]));
+            }
+        }*/
+
+        function importar() {
+            try {
+                var shapes = JSON.parse(document.getElementById("importar").value);
+                if (shapes.length > 0) {
+                    localStorage.setItem("shapes", JSON.stringify(shapes));
+                    alert("Importação realizada!\nSalve a saída de exportação e um lugar seguro e importe em outra máquina quando precisar");
+                    document.getElementById("importar").value = "";
+                    listar_shapes();
+                } else {
+                    alert("erro na importação");
+                }
+            } catch (e) {
+                alert("erro na importação");
+            }
+        }
+
+        function exportar() {
+            document.getElementById("exportar").innerHTML = "";
+            if (document.getElementById("btn_exportar").innerHTML == 'Exportar') {
+                document.getElementById("exportar").innerHTML = "<br> <h3> Saída - Exportação dos Shapes Salvos:</h3>" + localStorage.getItem("shapes");
+                document.getElementById("btn_exportar").innerHTML = 'Limpar Exportar';
+            } else {
+                document.getElementById("btn_exportar").innerHTML = 'Exportar';
+            }
+        }
+
+        // rever
+        function editar(i) {
+            var vetBotao = document.querySelectorAll("button");
+            var shapes = JSON.parse(localStorage.getItem("shapes"));
+            var s = shapes[i];
+            var resultado = confirm("Deseja mesmo substituir a configuração salva \"" + s.nome + "\" por esta que está no braço 1?");
+            if (resultado === true) {
+                alert("O shape " + s.nome + " receberá a configuração que está em exibição");
+                s.nome = prompt("Novo nome para " + s.nome + "?", s.nome);
+                if (s.nome != "") {
+                    var shapeNovo = []
+                    for (let index = 0; index < vetBotao.length; index++) {
+                        if (/*vetBotao[index].innerHTML == "--" ||*/ vetBotao[index].innerHTML == "1" || vetBotao[index].innerHTML == "2" || vetBotao[index].innerHTML == "3" || vetBotao[index].innerHTML == "4") {
+                            shapeNovo.push({ "botao": vetBotao[index].id, "dedo": vetBotao[index].innerHTML, "tonica": vetBotao[index].style.backgroundColor })
+                        }
+                    }
+                    s.shape = shapeNovo;
+                    shapes[i] = s;
+                    localStorage.setItem("shapes", JSON.stringify(shapes));
+                    listar_shapes();
+                } else {
+                    alert("nome não pode estar em branco");
+                }
+            } else {
+                alert("Operação cancelada!");
+            }
+        }
+
+        function deletar(i) {
+            var shapes = JSON.parse(localStorage.getItem("shapes"));
+            var s = shapes[i];
+            var resultado = confirm("Deseja mesmo deletar a configuração salva de " + s.nome + "?");
+            if (resultado === true) {
+                shapes.splice(i, 1);
+                localStorage.setItem("shapes", JSON.stringify(shapes));
+                listar_shapes();
+            } else {
+                alert("Operação cancelada!");
+            }
+        }
+
+        function duplicar(i) {
+            // reiniciar();
+            var shapeDuplicado = JSON.parse(localStorage.getItem("shapes"))[i];
+            var shapes = JSON.parse(localStorage.getItem("shapes"));
+            shapes.push({ "nome": prompt("novo nome", shapeDuplicado.nome + "_duplicado"), "shape": shapeDuplicado.shape });
+            localStorage.setItem("shapes", JSON.stringify(shapes));
+            listar_shapes();
+        }
+
+        function restaurar(i) {
+            // var vetBraco = document.querySelectorAll("table[name^='braco']");
+            // if (vetBraco.length == 0) novo_braco();
+            alert("A configuração será restaurada no braço 1")
+            reiniciar();
+            var s = JSON.parse(localStorage.getItem("shapes"))[i];
+            for (let index = 0; index < s.shape.length; index++) {
+                document.getElementById(s.shape[index].botao).innerHTML = s.shape[index].dedo;
+                document.getElementById(s.shape[index].botao).style.backgroundColor = s.shape[index].tonica;
+            }
+        }
+
+
+        function imprimir() {
+            // function imprimir(i) {
+            // restaurar(i);            
+            // var vetBotao = document.querySelectorAll("button");
+            // for (let index = 0; index < vetBotao.length; index++) {
+            //     if (vetBotao[index].innerHTML == "--") {
+            //         vetBotao[index].style.zIndex = -1;
+            //     }
+            // }
+
+            var vetHr = document.querySelectorAll("hr");
+            for (let index = 0; index < vetHr.length; index++) {
+                vetHr[index].style.display = "none";
+
+            }
+
+            var vetBotao = document.querySelectorAll("button[name^='btn_inicializar']");
+            for (let index = 0; index < vetBotao.length; index++) {
+                vetBotao[index].style.display = "none";
+
+            }
+            document.getElementById("btn_novo_braco").style.display = "none";
+            document.getElementById("btn_imprimir1").style.display = "none";
+
+            // document.getElementById("limpa_volta").innerHTML = "Retornar";
+            // document.getElementById("reiniciar").style.display = "none";
+            // document.getElementById("limpa_volta").style.display = "none";
+            // document.getElementById("salvar").style.display = "none";
+            // document.getElementById("listar").style.display = "none";
+            document.getElementById("btn_exportar").style.display = "none";
+            document.getElementById("btn_importar").style.display = "none";
+            document.getElementById("importar").style.display = "none";
+            document.getElementById("exportar").style.display = "none";
+            document.getElementById("lista_shapes").style.display = "none";
+            document.getElementById("btn_imprimir").style.display = "";
+            document.getElementById("btn_desativa_imprimir").style.display = "";
+            // window.print();
+
+
+
+            // var s = JSON.parse(localStorage.getItem("shapes"))[0];
+
+            // for (let index = 0; index < s.shape.length; index++) {
+            //     document.getElementById(s.shape[index].botao).innerHTML = s.shape[index].dedo;
+            //     document.getElementById(s.shape[index].botao).style.backgroundColor = s.shape[index].tonica;
+            // }
+
+            // var checkboxes = document.getElementsByName("checkbox_shapes");
+            // var markedCheckbox = document.getElementsByName('pl');
+            // for (var checkbox of checkboxes) {
+            //     if (checkbox.checked)
+            //         document.body.append(checkbox.value + ' ');
+            // }
+        }
+
+        function listar_shapes() {
+            document.getElementById("lista_shapes").innerHTML = "";
+            var shapes = JSON.parse(localStorage.getItem("shapes"));
+            if (shapes.length > 0) document.getElementById("lista_shapes").innerHTML += "<h3> Shapes Salvos</h3>";
+            for (let index = 0; index < shapes.length; index++) {
+                var s = shapes[index];
+                document.getElementById("lista_shapes").innerHTML += "<button class=\"btn btn-info\" onclick='restaurar(" + index + ")'>Restaurar</button>";
+                document.getElementById("lista_shapes").innerHTML += "<button class=\"btn btn-secondary\"onclick='duplicar(" + index + ")'>Duplicar</button>";
+                document.getElementById("lista_shapes").innerHTML += "<button class=\"btn btn-danger\" onclick='deletar(" + index + ")'>Deletar</button>";
+                document.getElementById("lista_shapes").innerHTML += "<button class=\"btn btn-warning\" onclick='editar(" + index + ")'>Editar</button> ";
+                // document.getElementById("lista_shapes").innerHTML += "<button class=\"btn btn-sucess\" onclick='imprimir(" + index + ")'>Imprimir</button>";
+                // document.getElementById("lista_shapes").innerHTML += " <input type='checkbox' name='checkbox_shapes[]' value='"+index+"'>  ";
+                document.getElementById("lista_shapes").innerHTML += s.nome + "<br>";
+                for (let index1 = 0; index1 < s.shape.length; index1++) {
+                    var b = s.shape[index1];
+                    // document.getElementById("lista_shapes").innerHTML += "*" + b.botao + ";" + b.dedo + "<br>";
+                }
+                document.getElementById("lista_shapes").innerHTML += "<hr>";
+            }
+        }
+
+        function salvarInicioFim(IDbotaoInicial, IDbotaoFinal) {
+            var vetBotao = document.querySelectorAll("button");
+            var shapeNovo = []
+            var ok = false;
+            for (let index = 0; index < vetBotao.length; index++) {
+                if (!isNaN(vetBotao[index].id)) {
+                    if (parseInt(vetBotao[index].id) >= IDbotaoInicial && parseInt(vetBotao[index].id) <= IDbotaoFinal) {
+                        if (/*vetBotao[index].innerHTML == "--" ||*/ vetBotao[index].innerHTML == "1" || vetBotao[index].innerHTML == "2" || vetBotao[index].innerHTML == "3" || vetBotao[index].innerHTML == "4") {
+                            ok = true;
+                        }
+                    }
+                }
+            }
+            if (ok === false) {
+                alert("Não é possível salvar shapes sem nenhuma nota indicada!");
+                return;
+            }
+            var nome = prompt("Nome?", "teste");
+            for (let index = 0; index < vetBotao.length; index++) {
+                if (!isNaN(vetBotao[index].id)) {
+                    if (parseInt(vetBotao[index].id) >= IDbotaoInicial && parseInt(vetBotao[index].id) <= IDbotaoFinal) {
+                        if (IDbotaoFinal <= 42) {
+                            if (/*vetBotao[index].innerHTML == "--" ||*/ vetBotao[index].innerHTML == "1" || vetBotao[index].innerHTML == "2" || vetBotao[index].innerHTML == "3" || vetBotao[index].innerHTML == "4") {
+                                shapeNovo.push({ "botao": vetBotao[index].id, "dedo": vetBotao[index].innerHTML, "tonica": vetBotao[index].style.backgroundColor })
+                            }
+                        } else {
+                            if (/*vetBotao[index].innerHTML == "--" ||*/ vetBotao[index].innerHTML == "1" || vetBotao[index].innerHTML == "2" || vetBotao[index].innerHTML == "3" || vetBotao[index].innerHTML == "4") {
+
+                                shapeNovo.push({ "botao": (parseInt(vetBotao[index].id) - parseInt(parseInt(vetBotao[index].id) / 42) * 42), "dedo": vetBotao[index].innerHTML, "tonica": vetBotao[index].style.backgroundColor })
+                            }
+                        }
+                    }
+                }
+            }
+            if (shapeNovo.length > 0) {
+                var shapes = JSON.parse(localStorage.getItem("shapes"));
+                shapes.push({ "nome": nome, "shape": shapeNovo });
+                localStorage.setItem("shapes", JSON.stringify(shapes));
+                listar_shapes();
+            }
+        }
+
+        function salvar() {
+            var nome = prompt("Nome?", "teste");
+            var vetBotao = document.querySelectorAll("button");
+            var shapeNovo = []
+            for (let index = 0; index < vetBotao.length; index++) {
+                if (!isNaN(vetBotao[index].id)) {
+                    if (/*vetBotao[index].innerHTML == "--" ||*/ vetBotao[index].innerHTML == "1" || vetBotao[index].innerHTML == "2" || vetBotao[index].innerHTML == "3" || vetBotao[index].innerHTML == "4") {
+                        shapeNovo.push({ "botao": vetBotao[index].id, "dedo": vetBotao[index].innerHTML, "tonica": vetBotao[index].style.backgroundColor })
+                    }
+                }
+            }
+            if (shapeNovo.length > 0) {
+                var shapes = JSON.parse(localStorage.getItem("shapes"));
+                shapes.push({ "nome": nome, "shape": shapeNovo });
+                localStorage.setItem("shapes", JSON.stringify(shapes));
+                listar_shapes();
+            }
+        }
+
+        function reiniciar() {
+            inicializar();
+            // var vetBotao = document.querySelectorAll("button");
+            // for (let index = 0; index < vetBotao.length; index++) {
+            //     if (vetBotao[index].innerHTML.trim() == "--" || vetBotao[index].innerHTML.trim() == "1" || vetBotao[index].innerHTML.trim() == "2" || vetBotao[index].innerHTML.trim() == "3" || vetBotao[index].innerHTML.trim() == "4") {
+            //         vetBotao[index].innerHTML = "--";
+            //         vetBotao[index].style.backgroundColor = "gray";
+            //         vetBotao[index].style.color = "white";
+            //     }
+            // }
+        }
+
+        // bug
+        function limpar_volta() {
+            var vetBotao = document.querySelectorAll("button");
+            if (document.getElementById("limpa_volta").innerHTML == 'Limpar') {
+                for (let index = 0; index < vetBotao.length; index++) {
+                    if (!isNaN(vetBotao[index].id)) {
+                        if (vetBotao[index].innerHTML == "--") {
+                            vetBotao[index].style.display = "none";
+                        }
+                    }
+                }
+                document.getElementById("limpa_volta").innerHTML = "Retornar";
+            } else {
+                for (let index = 0; index < vetBotao.length; index++) {
+                    if (!isNaN(vetBotao[index].id)) {
+                        if (vetBotao[index].innerHTML == "--") {
+                            vetBotao[index].style.display = "";
+                        }
+                    }
+                }
+                document.getElementById("limpa_volta").innerHTML = "Limpar";
+            }
+        }
+        function define(id) {
+            // alert(document.getElementById(id).style.backgroundColor);
+            if (document.getElementById(id).innerHTML == "--" && document.getElementById(id).style.backgroundColor == "") {
+                document.getElementById(id).innerHTML = "1";
+                document.getElementById(id).style.color = "white";
+                document.getElementById(id).style.backgroundColor = "black";
+            } else if (document.getElementById(id).innerHTML == "1" && document.getElementById(id).style.backgroundColor == "black") {
+                document.getElementById(id).style.color = "white";
+                document.getElementById(id).style.backgroundColor = "red";
+            } else if (document.getElementById(id).innerHTML == "1" && document.getElementById(id).style.backgroundColor == "red") {
+                document.getElementById(id).innerHTML = "2";
+                document.getElementById(id).style.color = "white";
+                document.getElementById(id).style.backgroundColor = "black";
+            } else if (document.getElementById(id).innerHTML == "2" && document.getElementById(id).style.backgroundColor == "black") {
+                document.getElementById(id).style.color = "white";
+                document.getElementById(id).style.backgroundColor = "red";
+            } else if (document.getElementById(id).innerHTML == "2" && document.getElementById(id).style.backgroundColor == "red") {
+                document.getElementById(id).innerHTML = "3";
+                document.getElementById(id).style.color = "white";
+                document.getElementById(id).style.backgroundColor = "black";
+            } else if (document.getElementById(id).innerHTML == "3" && document.getElementById(id).style.backgroundColor == "black") {
+                document.getElementById(id).style.color = "white";
+                document.getElementById(id).style.backgroundColor = "red";
+            } else if (document.getElementById(id).innerHTML == "3" && document.getElementById(id).style.backgroundColor == "red") {
+                document.getElementById(id).innerHTML = "4";
+                document.getElementById(id).style.color = "white";
+                document.getElementById(id).style.backgroundColor = "black";
+            } else if (document.getElementById(id).innerHTML == "4" && document.getElementById(id).style.backgroundColor == "black") {
+                document.getElementById(id).style.color = "white";
+                document.getElementById(id).style.backgroundColor = "red";
+            } else if (document.getElementById(id).innerHTML == "4" && document.getElementById(id).style.backgroundColor == "red") {
+                document.getElementById(id).innerHTML = "--";
+                document.getElementById(id).style.backgroundColor = "";
+            }
+            /*
+            var entrada = prompt("Ex:1,red|2,red|3,black|--,gray", "1,black");
+            if (entrada != null && entrada != "") {
+                if (entrada.length > 0) {
+                    if (entrada.split(",").length == 2) {
+                        document.getElementById(id).innerHTML = entrada.split(",")[0];
+                        if (entrada.split(",")[1] == 'black' || entrada.split(",")[1] == 'red' || entrada.split(",")[1] == 'gray') {
+                            document.getElementById(id).style = "background-color: " + entrada.split(",")[1];
+                        } else {
+                            alert("Respeite o formato: Ex: 1,red");
+                        }
+                    } else {
+                        alert("Respeite o formato: Ex: 1,red");
+                    }
+                } else {
+                    alert("Respeite o formato: Ex: 1,red");
+                }
+            }*/
+
+            // } else {
+            //     document.getElementById(id).innerHTML = dedo;
+            //     document.getElementById(id).style = "background-color: black";
+            // }
+            // var conteudo = document.getElementById(id).innerHTML;
+            // if (conteudo == "--") {
+            //     document.getElementById(id).innerHTML = "1";
+            //     document.getElementById(id).style = "background-color: black";
+            // }
+            // if (conteudo == "1") {
+            //     document.getElementById(id).innerHTML = "1";
+            //     document.getElementById(id).style = "background-color: red";
+            // }
+            // if (conteudo == "--") {
+            //     document.getElementById(id).innerHTML = "1";
+            //     document.getElementById(id).style = "background-color: black";
+            // }
+
+        }
+        function inicializar() {
+            inicializarInicioFim(1, 42);
+            // var vetBotao = document.querySelectorAll("button");
+            // for (let index = 0; index < vetBotao.length; index++) {
+            //     // if (!isNaN(vetBotao[index].id)) {
+            //         // if (parseInt(vetBotao[index].id) >= 1 && parseInt(vetBotao[index].id) <= 42) {
+            //         if (vetBotao[index].innerHTML == "--" || vetBotao[index].innerHTML == "1" || vetBotao[index].innerHTML == "2" || vetBotao[index].innerHTML == "3" || vetBotao[index].innerHTML == "4") {
+            //             vetBotao[index].innerHTML = "--";
+            //             vetBotao[index].style.backgroundColor = "";
+            //             vetBotao[index].style.zIndex = 1;
+            //         }
+            //     // }
+            // }
+        }
+
+        function deletarInicioFim(IDbotaoInicial, IDbotaoFinal) {
+            var table = document.querySelector("#braco_" + IDbotaoInicial);
+            while (table.rows[0]) table.deleteRow(0);
+            table.remove();
+            document.getElementsByName("btn_inicializar_" + IDbotaoInicial)[0].remove();
+            document.getElementsByName("btn_inicializar_salvar_" + IDbotaoInicial)[0].remove();
+            document.getElementsByName("btn_inicializar_deletar_" + IDbotaoInicial)[0].remove();
+        }
+
+        function inicializarInicioFim(IDbotaoInicial, IDbotaoFinal) {
+            var vetBotao = document.querySelectorAll("button");
+            for (let index = 0; index < vetBotao.length; index++) {
+                if (!isNaN(vetBotao[index].id)) {
+                    if (parseInt(vetBotao[index].id) >= IDbotaoInicial && parseInt(vetBotao[index].id) <= IDbotaoFinal) {
+                        if (vetBotao[index].innerHTML == "--" || vetBotao[index].innerHTML == "1" || vetBotao[index].innerHTML == "2" || vetBotao[index].innerHTML == "3" || vetBotao[index].innerHTML == "4") {
+                            vetBotao[index].innerHTML = "--";
+                            vetBotao[index].style.backgroundColor = "";
+                            vetBotao[index].style.zIndex = 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        function desativa_imprimir() {
+
+            var vetHr = document.querySelectorAll("hr");
+            for (let index = 0; index < vetHr.length; index++) {
+                vetHr[index].style.display = "";
+
+            }
+
+            // var vetBotao = document.querySelectorAll("button");
+            // for (let index = 0; index < vetBotao.length; index++) {
+            //     if (vetBotao[index].innerHTML == "--") {
+            //         vetBotao[index].style.zIndex = 1;
+            //     }
+            // }
+
+            var vetBotao = document.querySelectorAll("button[name^='btn_inicializar']");
+            for (let index = 0; index < vetBotao.length; index++) {
+                vetBotao[index].style.display = "";
+            }
+            // document.getElementById("limpa_volta").innerHTML = "Limpar";
+
+            // document.getElementById("reiniciar").style.display = "";
+            // document.getElementById("limpa_volta").style.display = "";
+            document.getElementById("btn_imprimir1").style.display = "";
+
+            // document.getElementById("salvar").style.display = "";
+            // document.getElementById("listar").style.display = "";
+            document.getElementById("btn_exportar").style.display = "";
+            document.getElementById("btn_importar").style.display = "";
+            document.getElementById("importar").style.display = "";
+            document.getElementById("exportar").style.display = "";
+            document.getElementById("lista_shapes").style.display = "";
+            document.getElementById("btn_imprimir").style.display = "none";
+            document.getElementById("btn_desativa_imprimir").style.display = "none";
+
+            document.getElementById("btn_novo_braco").style.display = "";
+
+        }
+
+        window.addEventListener("afterprint", (event) => {
+            // var vetBotao = document.querySelectorAll("button[name^='btn_inicializar']");
+            // for (let index = 0; index < vetBotao.length; index++) {
+            //     vetBotao[index].style.display = "none";
+
+            // }
+            document.getElementById("btn_novo_braco").style.display = "none";
+            document.getElementById("btn_imprimir").style.display = "";
+            document.getElementById("btn_desativa_imprimir").style.display = "";
+        });
+
+
+        function imprimir_mesmo() {
+            // var vetBotao = document.querySelectorAll("button[name^='btn_inicializar']");
+            // for (let index = 0; index < vetBotao.length; index++) {
+            //     vetBotao[index].style.display = "none";
+
+            // }
+            document.getElementById("btn_novo_braco").style.display = "none";
+            document.getElementById("btn_imprimir").style.display = "none";
+            document.getElementById("btn_desativa_imprimir").style.display = "none";
+            window.print();
+        }
+
+        function maiorIDButton() {
+            var vetBotao = document.querySelectorAll("button");
+            var maior = 0;
+            for (let index = 0; index < vetBotao.length; index++) {
+                if (!isNaN(vetBotao[index].id)) {
+                    if (maior < parseInt(vetBotao[index].id)) {
+                        maior = parseInt(vetBotao[index].id);
+                    }
+                }
+            }
+            return maior;
+        }
+
+        function novo_braco() {
+            var idButton = parseInt(maiorIDButton()) + 1;
+            var html = "";
+            html += "<div>";
+            html += "<table id=\"braco_" + idButton + "\">";
+            html += "<tr>";
+            html += "<td>";
+            html += "<button id=\"" + (idButton) + "\" class=\"button\" onclick=\"define(" + (idButton) + ")\">--</button>";
+
+            html += "</td>";
+            html += "<td>";
+            html += "<button id=\"" + (idButton + 1) + "\"  class=\"button\" onclick=\"define(" + (idButton + 1) + ")\">--</button>";
+            html += "</td>";
+
+            html += "<td>";
+            html += "<button id=\"" + (idButton + 2) + "\" class=\"button\" onclick=\"define(" + (idButton + 2) + ")\">--</button>";
+            html += "</td>";
+
+            html += "<td>";
+            html += "<button id=\"" + (idButton + 3) + "\"  class=\"button\" onclick=\"define(" + (idButton + 3) + ")\">--</button>";
+            html += "</td>";
+
+            html += "<td>";
+            html += "<button id=\"" + (idButton + 4) + "\" class=\"button\" onclick=\"define(" + (idButton + 4) + ")\">--</button>";
+            html += "</td>";
+
+            html += "<td>";
+            html += "<button id=\"" + (idButton + 5) + "\" class=\"button\" onclick=\"define(" + (idButton + 5) + ")\">--</button>";
+            html += "</td>";
+
+            html += "<td>";
+            html += "<button id=\"" + (idButton + 6) + "\" class=\"button\"  onclick=\"define(" + (idButton + 6) + ")\">--</button>";
+            html += "</td>";
+
+            html += "</tr>";
+            html += "<tr>";
+
+            html += "<td>";
+            html += "<button id=\"" + (idButton + 7) + "\" class=\"button\"  onclick=\"define(" + (idButton + 7) + ")\">--</button>";
+            html += "</td>";
+
+
+            html += "<td>";
+            html += "<button id=\"" + (idButton + 8) + "\" class=\"button\"  onclick=\"define(" + (idButton + 8) + ")\">--</button>";
+            html += "</td>";
+
+            html += "<td>";
+
+            html += "<button id=\"" + (idButton + 9) + "\" class=\"button\"  onclick=\"define(" + (idButton + 9) + ")\">--</button>";
+            html += "</td>";
+
+
+            html += "<td>";
+
+            html += "<button id=\"" + (idButton + 10) + "\" class=\"button\"  onclick=\"define(" + (idButton + 10) + ")\">--</button>";
+            html += "</td>";
+
+            html += "<td>";
+
+            html += "<button id=\"" + (idButton + 11) + "\" class=\"button\"  onclick=\"define(" + (idButton + 11) + ")\">--</button>";
+            html += "</td>";
+
+            html += "<td>";
+
+            html += "<button id=\"" + (idButton + 12) + "\" class=\"button\"  onclick=\"define(" + (idButton + 12) + ")\">--</button>";
+            html += "</td>";
+
+            html += "<td>";
+
+            html += "<button id=\"" + (idButton + 13) + "\" class=\"button\"  onclick=\"define(" + (idButton + 13) + ")\">--</button><br>";
+
+            html += "</td>";
+
+
+            html += "</tr>";
+
+            html += "<tr>";
+            html += "<td>";
+
+
+            html += "<button id=\"" + (idButton + 14) + "\" class=\"button\"  onclick=\"define(" + (idButton + 14) + ")\">--</button>";
+            html += "</td>";
+
+            html += "<td>";
+
+            html += "<button id=\"" + (idButton + 15) + "\" class=\"button\"  onclick=\"define(" + (idButton + 15) + ")\">--</button>";
+            html += "</td>";
+
+            html += "<td>";
+
+            html += "<button id=\"" + (idButton + 16) + "\" class=\"button\"  onclick=\"define(" + (idButton + 16) + ")\">--</button>";
+            html += "</td>";
+
+            html += "<td>";
+
+            html += "<button id=\"" + (idButton + 17) + "\" class=\"button\"  onclick=\"define(" + (idButton + 17) + ")\">--</button>";
+            html += "</td>";
+
+            html += "<td>";
+
+            html += "<button id=\"" + (idButton + 18) + "\" class=\"button\"  onclick=\"define(" + (idButton + 18) + ")\">--</button>";
+            html += "</td>";
+
+            html += "<td>";
+
+            html += "<button id=\"" + (idButton + 19) + "\" class=\"button\"  onclick=\"define(" + (idButton + 19) + ")\">--</button>";
+            html += "</td>";
+
+            html += "<td>";
+
+            html += "<button id=\"" + (idButton + 20) + "\" class=\"button\"  onclick=\"define(" + (idButton + 20) + ")\">--</button><br>";
+            html += "</td>";
+
+            html += "</tr>";
+
+
+
+            html += "<tr>";
+            html += "<td>";
+
+            html += "<button id=\"" + (idButton + 21) + "\" class=\"button\"  onclick=\"define(" + (idButton + 21) + ")\">--</button>";
+            html += "</td>";
+
+            html += "<td>";
+            html += "<button id=\"" + (idButton + 22) + "\" class=\"button\"  onclick=\"define(" + (idButton + 22) + ")\">--</button>";
+
+
+            html += "</td>";
+
+
+            html += "<td>";
+            html += "<button id=\"" + (idButton + 23) + "\" class=\"button\"  onclick=\"define(" + (idButton + 23) + ")\">--</button>";
+
+
+            html += "</td>";
+
+
+            html += "<td>";
+            html += "<button id=\"" + (idButton + 24) + "\" class=\"button\"  onclick=\"define(" + (idButton + 24) + ")\">--</button>";
+
+
+            html += "</td>";
+
+            html += "<td>";
+            html += "<button id=\"" + (idButton + 25) + "\" class=\"button\"  onclick=\"define(" + (idButton + 25) + ")\">--</button>";
+
+
+            html += "</td>";
+
+
+            html += "<td>";
+            html += "<button id=\"" + (idButton + 26) + "\" class=\"button\"  onclick=\"define(" + (idButton + 26) + ")\">--</button>";
+
+
+            html += "</td>";
+
+
+
+            html += "<td>";
+            html += "<button id=\"" + (idButton + 27) + "\" class=\"button\"  onclick=\"define(" + (idButton + 27) + ")\">--</button>";
+
+
+            html += "</td>";
+
+            html += "</tr>";
+
+
+            html += "<tr>";
+            html += "<td>";
+
+            html += "<button id=\"" + (idButton + 28) + "\" class=\"button\"  onclick=\"define(" + (idButton + 28) + ")\">--</button>";
+            html += "</td>";
+
+
+            html += "<td>";
+
+            html += "<button id=\"" + (idButton + 29) + "\" class=\"button\"  onclick=\"define(" + (idButton + 29) + ")\">--</button>";
+
+            html += "</td>";
+
+
+            html += "<td>";
+
+            html += "<button id=\"" + (idButton + 30) + "\" class=\"button\"  onclick=\"define(" + (idButton + 30) + ")\">--</button>";
+
+            html += "</td>";
+
+
+            html += "<td>";
+
+            html += "<button id=\"" + (idButton + 31) + "\" class=\"button\"  onclick=\"define(" + (idButton + 31) + ")\">--</button>";
+
+            html += "</td>";
+
+
+            html += "<td>";
+
+            html += "<button id=\"" + (idButton + 32) + "\" class=\"button\"  onclick=\"define(" + (idButton + 32) + ")\">--</button>";
+
+            html += "</td>";
+
+
+            html += "<td>";
+
+            html += "<button id=\"" + (idButton + 33) + "\" class=\"button\"  onclick=\"define(" + (idButton + 33) + ")\">--</button>";
+
+            html += "</td>";
+
+
+            html += "<td>";
+
+            html += "<button id=\"" + (idButton + 34) + "\" class=\"button\"  onclick=\"define(" + (idButton + 34) + ")\">--</button>";
+
+            html += "</td>";
+
+            html += "</tr>";
+
+            html += "<tr>";
+            html += "<td>";
+
+            html += "<button id=\"" + (idButton + 35) + "\" class=\"button\"  onclick=\"define(" + (idButton + 35) + ")\">--</button>";
+            html += "</td>";
+
+            html += "<td>";
+
+            html += "<button id=\"" + (idButton + 36) + "\" class=\"button\"  onclick=\"define(" + (idButton + 36) + ")\">--</button>";
+            html += "</td>";
+
+            html += "<td>";
+
+            html += "<button id=\"" + (idButton + 37) + "\" class=\"button\"  onclick=\"define(" + (idButton + 37) + ")\">--</button>";
+            html += "</td>";
+
+            html += "<td>";
+
+            html += "<button id=\"" + (idButton + 38) + "\" class=\"button\"  onclick=\"define(" + (idButton + 38) + ")\">--</button>";
+            html += "</td>";
+
+            html += "<td>";
+
+            html += "<button id=\"" + (idButton + 39) + "\" class=\"button\"  onclick=\"define(" + (idButton + 39) + ")\">--</button>";
+            html += "</td>";
+
+            html += "<td>";
+
+            html += "<button id=\"" + (idButton + 40) + "\" class=\"button\"  onclick=\"define(" + (idButton + 40) + ")\">--</button>";
+            html += "</td>";
+
+            html += "<td>";
+
+            html += "<button id=\"" + (idButton + 41) + "\" class=\"button\"  onclick=\"define(" + (idButton + 41) + ")\">--</button>";
+            html += "</td>";
+
+
+            // html += "<td>";
+
+            // html += "<button id=\"" + (idButton + 42) + "\" class=\"button\"  onclick=\"define(" + (idButton + 42) + ")\">--</button>";
+            // html += "</td>";
+
+
+
+
+
+
+
+
+
+
+            html += "</tr>";
+
+            html += "</table></div><br><button class=\"btn btn-secondary\" name=\"btn_inicializar_" + idButton + "\" onclick=\"inicializarInicioFim(" + idButton + ", " + (idButton + 41) + ")\"> Limpar</button> ";
+
+            html += "<button class=\"btn btn-success\" name=\"btn_inicializar_salvar_" + idButton + "\" onclick=\"salvarInicioFim(" + idButton + ", " + (idButton + 41) + ")\"> Salvar </button>";
+
+            if (idButton != 1) html += " <button class=\"btn btn-danger\" name=\"btn_inicializar_deletar_" + idButton + "\" onclick=\"deletarInicioFim(" + idButton + ", " + (idButton + 41) + ")\"> Deletar </button>";
+
+            html += "<br><br>";
+            document.querySelector("#corpo").innerHTML += html;
+
+
+
+
+            html += "<br>";
+
+            // </div>
+
+        }
+    </script>
+</head>
+
+<body onload="novo_braco(); listar_shapes();">
+    <img src="logo.png" height="150px" width="15%">
+    <img src="logo_repeat.png" height="150px"
+        style="width: 85%; background-repeat: repeat-x; position: float; float: right; ">
+    <br>
+    <br>
+    <!-- <h3>Braço(s): -->
+        <h3> <button id="btn_novo_braco" onclick="novo_braco()">+Braço</button> <button id="btn_imprimir1" onclick="imprimir()" class="btn btn-primary">Modo Impressão</button>
+        </h3>
+        <br>
+
+    <div style="  display: flex;   flex-flow: row wrap;">
+
+
+
+        <div id="corpo" style="padding-left: 10px;">
+            <!--<div>
+            <img src="violao.jpg">
+            <button id="1" class="button" style="position: absolute; left: 10px; z-index: 1;"
+                onclick="define(1)">--</button>
+            <button id="2" class="button" style="position: absolute; left: 105px; z-index: 1;"
+                onclick="define(2)">--</button>
+            <button id="3" class="button" style="position: absolute; left: 230px; z-index: 1;"
+                onclick="define(3)">--</button>
+            <button id="4" class="button" style="position: absolute; left: 330px; z-index: 1;"
+                onclick="define(4)">--</button>
+            <button id="5" class="button" style="position: absolute; left: 430px; z-index: 1;"
+                onclick="define(5)">--</button>
+            <button id="6" class="button" style="position: absolute; left: 530px; z-index: 1;"
+                onclick="define(6)">--</button>
+            <button id="7" class="button" style="position: absolute; left: 630px; z-index: 1;"
+                onclick="define(7)">--</button><br>
+
+            <button id="8" class="button" style="position: absolute; top:30px; left: 10px; z-index: 1;"
+                onclick="define(8)">--</button>
+            <button id="9" class="button" style="position: absolute; top:30px; left: 105px; z-index: 1;"
+                onclick="define(9)">--</button>
+            <button id="10" class="button" style="position: absolute; top:30px; left: 230px; z-index: 1;"
+                onclick="define(10)">--</button>
+            <button id="11" class="button" style="position: absolute; top:30px; left: 330px; z-index: 1;"
+                onclick="define(11)">--</button>
+            <button id="12" class="button" style="position: absolute; top:30px; left: 430px; z-index: 1;"
+                onclick="define(12)">--</button>
+            <button id="13" class="button" style="position: absolute; top:30px; left: 530px; z-index: 1;"
+                onclick="define(13)">--</button>
+            <button id="14" class="button" style="position: absolute; top:30px; left: 630px; z-index: 1;"
+                onclick="define(14)">--</button><br>
+
+            <button id="15" class="button" style="position: absolute; top:60px; left: 10px; z-index: 1;"
+                onclick="define(15)">--</button>
+            <button id="16" class="button" style="position: absolute; top:60px; left: 105px; z-index: 1;"
+                onclick="define(16)">--</button>
+            <button id="17" class="button" style="position: absolute; top:60px; left: 230px; z-index: 1;"
+                onclick="define(17)">--</button>
+            <button id="18" class="button" style="position: absolute; top:60px; left: 330px; z-index: 1;"
+                onclick="define(18)">--</button>
+            <button id="19" class="button" style="position: absolute; top:60px; left: 430px; z-index: 1;"
+                onclick="define(19)">--</button>
+            <button id="20" class="button" style="position: absolute; top:60px; left: 530px; z-index: 1;"
+                onclick="define(20)">--</button>
+            <button id="21" class="button" style="position: absolute; top:60px; left: 630px; z-index: 1;"
+                onclick="define(21)">--</button><br>
+
+
+            <button id="22" class="button" style="position: absolute; top:95px; left: 10px; z-index: 1;"
+                onclick="define(22)">--</button>
+            <button id="23" class="button" style="position: absolute; top:95px; left: 105px; z-index: 1;"
+                onclick="define(23)">--</button>
+            <button id="24" class="button" style="position: absolute; top:95px; left: 230px; z-index: 1;"
+                onclick="define(24)">--</button>
+            <button id="25" class="button" style="position: absolute; top:95px; left: 330px; z-index: 1;"
+                onclick="define(25)">--</button>
+            <button id="26" class="button" style="position: absolute; top:95px; left: 430px; z-index: 1;"
+                onclick="define(26)">--</button>
+            <button id="27" class="button" style="position: absolute; top:95px; left: 530px; z-index: 1;"
+                onclick="define(27)">--</button>
+            <button id="28" class="button" style="position: absolute; top:95px; left: 630px; z-index: 1;"
+                onclick="define(28)">--</button><br>
+
+            <button id="29" class="button" style="position: absolute; top:130px; left: 10px; z-index: 1;"
+                onclick="define(29)">--</button>
+            <button id="30" class="button" style="position: absolute; top:130px; left: 105px; z-index: 1;"
+                onclick="define(30)">--</button>
+            <button id="31" class="button" style="position: absolute; top:130px; left: 230px; z-index: 1;"
+                onclick="define(31)">--</button>
+            <button id="32" class="button" style="position: absolute; top:130px; left: 330px; z-index: 1;"
+                onclick="define(32)">--</button>
+            <button id="33" class="button" style="position: absolute; top:130px; left: 430px; z-index: 1;"
+                onclick="define(33)">--</button>
+            <button id="34" class="button" style="position: absolute; top:130px; left: 530px; z-index: 1;"
+                onclick="define(34)">--</button>
+            <button id="35" class="button" style="position: absolute; top:130px; left: 630px; z-index: 1;"
+                onclick="define(35)">--</button><br>
+
+            <button id="36" class="button" style="position: absolute; top:170px; left: 10px; z-index: 1;"
+                onclick="define(36)">--</button>
+            <button id="37" class="button" style="position: absolute; top:170px; left: 105px; z-index: 1;"
+                onclick="define(37)">--</button>
+            <button id="38" class="button" style="position: absolute; top:170px; left: 230px; z-index: 1;"
+                onclick="define(38)">--</button>
+            <button id="39" class="button" style="position: absolute; top:170px; left: 330px; z-index: 1;"
+                onclick="define(39)">--</button>
+            <button id="40" class="button" style="position: absolute; top:170px; left: 430px; z-index: 1;"
+                onclick="define(40)">--</button>
+            <button id="41" class="button" style="position: absolute; top:170px; left: 530px; z-index: 1;"
+                onclick="define(41)">--</button>
+            <button id="42" class="button" style="position: absolute; top:170px; left: 630px; z-index: 1;"
+                onclick="define(42)">--</button><br>
+            <div>-->
+
+
+        </div>
+
+
+
+
+        <!-- <hr> -->
+
+        <div style="padding-right: 25px; padding-left: 100px;">
+            <div id="lista_shapes"></div>
+
+            <!-- <div style="display: inline-block;"> -->
+            <!-- <button id="listar" onclick="listar_shapes()" class="btn btn-warning" class="btn btn-info">Exibir Shapes Salvos</button> -->
+
+            <!-- <button id="reiniciar" onclick="reiniciar()" class="btn btn-primary">Reiniciar</button> -->
+
+            <!-- <button id="limpa_volta" onclick="limpar_volta()" class="btn btn-secondary">Limpar</button> -->
+            <!-- <button id="salvar" onclick="salvar()" class="btn btn-success" class="btn btn-info">Salvar</button> -->
+
+            <!-- <button id="btn_exportar" onclick="exportar()" class="btn btn-info">Exportar Shapes Salvos</button> -->
+            <!-- <div id="exportar"></div> -->
+
+            <!-- <hr> -->
+
+
+            <button id="btn_exportar" onclick="exportar()" class="btn btn-info">Exportar</button>
+            <button id="btn_importar" onclick="importar()" class="btn btn-info">Importar</button>
+            <textarea id="importar" cols="40" rows="5"></textarea>
+
+            <button id="btn_desativa_imprimir" onclick="desativa_imprimir()" style="display:none;">Voltar</button>
+            <button id="btn_imprimir" onclick="imprimir_mesmo()" style="display:none;">Imprimir</button>
+
+            <!-- <button onclick="maiorIDButton()">maior</button> -->
+
+        </div>
+    </div>
+    <div id="exportar"></div>
+
+
+</body>
+
+</html>
