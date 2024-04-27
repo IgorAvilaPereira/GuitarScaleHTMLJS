@@ -63,7 +63,7 @@
         function exportar() {
             document.getElementById("exportar").innerHTML = "";
             if (document.getElementById("btn_exportar").innerHTML == 'Exportar') {
-                document.getElementById("exportar").innerHTML = "<br> <h3> Saída - Exportação dos Shapes Salvos:</h3>" + localStorage.getItem("shapes");
+                document.getElementById("exportar").innerHTML = "<h3> Saída - Exportação dos Shapes Salvos:</h3>" + localStorage.getItem("shapes");
                 document.getElementById("btn_exportar").innerHTML = 'Limpar Exportar';
             } else {
                 document.getElementById("btn_exportar").innerHTML = 'Exportar';
@@ -399,6 +399,7 @@
             document.getElementsByName("btn_inicializar_" + IDbotaoInicial)[0].remove();
             document.getElementsByName("btn_inicializar_salvar_" + IDbotaoInicial)[0].remove();
             document.getElementsByName("btn_inicializar_deletar_" + IDbotaoInicial)[0].remove();
+            // document.querySelector("#div_" + IDbotaoInicial).remove();
         }
 
         function inicializarInicioFim(IDbotaoInicial, IDbotaoFinal) {
@@ -450,9 +451,7 @@
             document.getElementById("lista_shapes").style.display = "";
             document.getElementById("btn_imprimir").style.display = "none";
             document.getElementById("btn_desativa_imprimir").style.display = "none";
-
             document.getElementById("btn_novo_braco").style.display = "";
-
         }
 
         window.addEventListener("afterprint", (event) => {
@@ -495,8 +494,8 @@
         function novo_braco() {
             var idButton = parseInt(maiorIDButton()) + 1;
             var html = "";
-            html += "<div>";
-            html += "<table id=\"braco_" + idButton + "\">";
+            // html += "<div id=\"div_" + idButton + "\">";
+            html += "<table style=\"margin-top: 15px\" id=\"braco_" + idButton + "\">";
             html += "<tr>";
             html += "<td>";
             html += "<button id=\"" + (idButton) + "\" class=\"button\" onclick=\"define(" + (idButton) + ")\">--</button>";
@@ -762,19 +761,19 @@
 
             html += "</tr>";
 
-            html += "</table></div><br><button class=\"btn btn-secondary\" name=\"btn_inicializar_" + idButton + "\" onclick=\"inicializarInicioFim(" + idButton + ", " + (idButton + 41) + ")\"> Limpar</button> ";
+            html += "</table><button class=\"btn btn-secondary\" name=\"btn_inicializar_" + idButton + "\" onclick=\"inicializarInicioFim(" + idButton + ", " + (idButton + 41) + ")\"> Limpar</button> ";
 
             html += "<button class=\"btn btn-success\" name=\"btn_inicializar_salvar_" + idButton + "\" onclick=\"salvarInicioFim(" + idButton + ", " + (idButton + 41) + ")\"> Salvar </button>";
 
             if (idButton != 1) html += " <button class=\"btn btn-danger\" name=\"btn_inicializar_deletar_" + idButton + "\" onclick=\"deletarInicioFim(" + idButton + ", " + (idButton + 41) + ")\"> Deletar </button>";
 
-            html += "<br><br>";
+            // html += "<br><br>";
             document.querySelector("#corpo").innerHTML += html;
 
 
 
 
-            html += "<br>";
+            // html += "<br>";
 
             // </div>
 
