@@ -114,9 +114,15 @@
             // reiniciar();
             var shapeDuplicado = JSON.parse(localStorage.getItem("shapes"))[i];
             var shapes = JSON.parse(localStorage.getItem("shapes"));
-            shapes.push({ "nome": prompt("novo nome", shapeDuplicado.nome + "_duplicado"), "shape": shapeDuplicado.shape });
-            localStorage.setItem("shapes", JSON.stringify(shapes));
-            listar_shapes();
+            var nome = prompt("novo nome", shapeDuplicado.nome + "_duplicado");
+            if (nome == "") {
+                alert("Nome inválido! Shape " + shapeDuplicado.nome + " não foi duplicado!");
+                return;
+            } else if (nome != null) {
+                shapes.push({ "nome": nome, "shape": shapeDuplicado.shape });
+                localStorage.setItem("shapes", JSON.stringify(shapes));
+                listar_shapes();
+            }
         }
 
         function restaurar(i) {
@@ -226,27 +232,32 @@
                 return;
             }
             var nome = prompt("Nome?", "teste");
-            for (let index = 0; index < vetBotao.length; index++) {
-                if (!isNaN(vetBotao[index].id)) {
-                    if (parseInt(vetBotao[index].id) >= IDbotaoInicial && parseInt(vetBotao[index].id) <= IDbotaoFinal) {
-                        if (IDbotaoFinal <= 42) {
-                            if (/*vetBotao[index].innerHTML == "--" ||*/ vetBotao[index].innerHTML == "1" || vetBotao[index].innerHTML == "2" || vetBotao[index].innerHTML == "3" || vetBotao[index].innerHTML == "4") {
-                                shapeNovo.push({ "botao": vetBotao[index].id, "dedo": vetBotao[index].innerHTML, "tonica": vetBotao[index].style.backgroundColor })
-                            }
-                        } else {
-                            if (/*vetBotao[index].innerHTML == "--" ||*/ vetBotao[index].innerHTML == "1" || vetBotao[index].innerHTML == "2" || vetBotao[index].innerHTML == "3" || vetBotao[index].innerHTML == "4") {
+            if (nome == "") {
+                alert("Nome inválido! Shape não foi salvo!");
+                return;
+            } else if (nome != null) {
+                for (let index = 0; index < vetBotao.length; index++) {
+                    if (!isNaN(vetBotao[index].id)) {
+                        if (parseInt(vetBotao[index].id) >= IDbotaoInicial && parseInt(vetBotao[index].id) <= IDbotaoFinal) {
+                            if (IDbotaoFinal <= 42) {
+                                if (/*vetBotao[index].innerHTML == "--" ||*/ vetBotao[index].innerHTML == "1" || vetBotao[index].innerHTML == "2" || vetBotao[index].innerHTML == "3" || vetBotao[index].innerHTML == "4") {
+                                    shapeNovo.push({ "botao": vetBotao[index].id, "dedo": vetBotao[index].innerHTML, "tonica": vetBotao[index].style.backgroundColor })
+                                }
+                            } else {
+                                if (/*vetBotao[index].innerHTML == "--" ||*/ vetBotao[index].innerHTML == "1" || vetBotao[index].innerHTML == "2" || vetBotao[index].innerHTML == "3" || vetBotao[index].innerHTML == "4") {
 
-                                shapeNovo.push({ "botao": (parseInt(vetBotao[index].id) - parseInt(parseInt(vetBotao[index].id) / 42) * 42), "dedo": vetBotao[index].innerHTML, "tonica": vetBotao[index].style.backgroundColor })
+                                    shapeNovo.push({ "botao": (parseInt(vetBotao[index].id) - parseInt(parseInt(vetBotao[index].id) / 42) * 42), "dedo": vetBotao[index].innerHTML, "tonica": vetBotao[index].style.backgroundColor })
+                                }
                             }
                         }
                     }
                 }
-            }
-            if (shapeNovo.length > 0) {
-                var shapes = JSON.parse(localStorage.getItem("shapes"));
-                shapes.push({ "nome": nome, "shape": shapeNovo });
-                localStorage.setItem("shapes", JSON.stringify(shapes));
-                listar_shapes();
+                if (shapeNovo.length > 0) {
+                    var shapes = JSON.parse(localStorage.getItem("shapes"));
+                    shapes.push({ "nome": nome, "shape": shapeNovo });
+                    localStorage.setItem("shapes", JSON.stringify(shapes));
+                    listar_shapes();
+                }
             }
         }
 
