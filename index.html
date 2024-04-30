@@ -70,7 +70,6 @@
             }
         }
 
-        // rever
         function editar(i) {
             var vetBotao = document.querySelectorAll("button");
             var shapes = JSON.parse(localStorage.getItem("shapes"));
@@ -282,29 +281,66 @@
             // }
         }
 
-        // bug
-        function limpar_volta() {
+        function limparInicioFim(IDbotaoInicial, IDbotaoFinal) {
             var vetBotao = document.querySelectorAll("button");
-            if (document.getElementById("limpa_volta").innerHTML == 'Limpar') {
+            if (document.getElementsByName("btn_inicializar_limpar_" + IDbotaoInicial)[0].innerText === 'Limpar') {
                 for (let index = 0; index < vetBotao.length; index++) {
                     if (!isNaN(vetBotao[index].id)) {
-                        if (vetBotao[index].innerHTML == "--") {
-                            vetBotao[index].style.display = "none";
+                        if (parseInt(vetBotao[index].id) >= IDbotaoInicial && parseInt(vetBotao[index].id) <= IDbotaoFinal) {
+
+                            if (vetBotao[index].innerHTML == "--") {
+                                vetBotao[index].style.backgroundColor = "transparent";
+                                vetBotao[index].style.color = "transparent";
+                            }
                         }
                     }
                 }
-                document.getElementById("limpa_volta").innerHTML = "Retornar";
+                document.getElementsByName("btn_inicializar_limpar_" + IDbotaoInicial)[0].innerHTML = "Retornar";
             } else {
+                // alert("oi");
                 for (let index = 0; index < vetBotao.length; index++) {
                     if (!isNaN(vetBotao[index].id)) {
-                        if (vetBotao[index].innerHTML == "--") {
-                            vetBotao[index].style.display = "";
+                        if (parseInt(vetBotao[index].id) >= IDbotaoInicial && parseInt(vetBotao[index].id) <= IDbotaoFinal) {
+                            if (vetBotao[index].innerHTML == "--") {
+                                vetBotao[index].style.backgroundColor = "";
+                                vetBotao[index].style.color = "";
+                                vetBotao[index].innerHTML = "--";
+                                vetBotao[index].className = "button";
+                            }
                         }
                     }
                 }
-                document.getElementById("limpa_volta").innerHTML = "Limpar";
+                document.getElementsByName("btn_inicializar_limpar_" + IDbotaoInicial)[0].innerHTML = "Limpar";
             }
         }
+
+        // bug
+        // function limpar_volta() {
+        //     var vetBotao = document.querySelectorAll("button");
+        //     if (document.getElementById("limpa_volta").innerHTML == 'Limpar') {
+        //         for (let index = 0; index < vetBotao.length; index++) {
+        //             if (!isNaN(vetBotao[index].id)) {
+        //                 if (parseInt(vetBotao[index].id) >= IDbotaoInicial && parseInt(vetBotao[index].id) <= IDbotaoFinal) {
+        //                     if (vetBotao[index].innerHTML == "--") {
+        //                         vetBotao[index].style.display = "none";
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //         document.getElementById("limpa_volta").innerHTML = "Retornar";
+        //     } else {
+        //         for (let index = 0; index < vetBotao.length; index++) {
+        //             if (!isNaN(vetBotao[index].id)) {
+        //                 if (parseInt(vetBotao[index].id) >= IDbotaoInicial && parseInt(vetBotao[index].id) <= IDbotaoFinal) {
+        //                     if (vetBotao[index].innerHTML == "--") {
+        //                         vetBotao[index].style.display = "";
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //         document.getElementById("limpa_volta").innerHTML = "Limpar";
+        //     }
+        // }
         function define(id) {
             // alert(document.getElementById(id).style.backgroundColor);
             if (document.getElementById(id).innerHTML == "--" && document.getElementById(id).style.backgroundColor == "") {
@@ -399,6 +435,7 @@
             document.getElementsByName("btn_inicializar_" + IDbotaoInicial)[0].remove();
             document.getElementsByName("btn_inicializar_salvar_" + IDbotaoInicial)[0].remove();
             document.getElementsByName("btn_inicializar_deletar_" + IDbotaoInicial)[0].remove();
+            document.getElementsByName("btn_inicializar_limpar_" + IDbotaoInicial)[0].remove();
             // document.querySelector("#div_" + IDbotaoInicial).remove();
         }
 
@@ -494,289 +531,150 @@
         function novo_braco() {
             var idButton = parseInt(maiorIDButton()) + 1;
             var html = "";
-            // html += "<div id=\"div_" + idButton + "\">";
             html += "<table style=\"margin-top: 15px\" id=\"braco_" + idButton + "\">";
             html += "<tr>";
             html += "<td>";
             html += "<button id=\"" + (idButton) + "\" class=\"button\" onclick=\"define(" + (idButton) + ")\">--</button>";
-
             html += "</td>";
             html += "<td>";
             html += "<button id=\"" + (idButton + 1) + "\"  class=\"button\" onclick=\"define(" + (idButton + 1) + ")\">--</button>";
             html += "</td>";
-
             html += "<td>";
             html += "<button id=\"" + (idButton + 2) + "\" class=\"button\" onclick=\"define(" + (idButton + 2) + ")\">--</button>";
             html += "</td>";
-
             html += "<td>";
             html += "<button id=\"" + (idButton + 3) + "\"  class=\"button\" onclick=\"define(" + (idButton + 3) + ")\">--</button>";
             html += "</td>";
-
             html += "<td>";
             html += "<button id=\"" + (idButton + 4) + "\" class=\"button\" onclick=\"define(" + (idButton + 4) + ")\">--</button>";
             html += "</td>";
-
             html += "<td>";
             html += "<button id=\"" + (idButton + 5) + "\" class=\"button\" onclick=\"define(" + (idButton + 5) + ")\">--</button>";
             html += "</td>";
-
             html += "<td>";
             html += "<button id=\"" + (idButton + 6) + "\" class=\"button\"  onclick=\"define(" + (idButton + 6) + ")\">--</button>";
             html += "</td>";
-
             html += "</tr>";
             html += "<tr>";
-
             html += "<td>";
             html += "<button id=\"" + (idButton + 7) + "\" class=\"button\"  onclick=\"define(" + (idButton + 7) + ")\">--</button>";
             html += "</td>";
-
-
             html += "<td>";
             html += "<button id=\"" + (idButton + 8) + "\" class=\"button\"  onclick=\"define(" + (idButton + 8) + ")\">--</button>";
             html += "</td>";
-
             html += "<td>";
-
             html += "<button id=\"" + (idButton + 9) + "\" class=\"button\"  onclick=\"define(" + (idButton + 9) + ")\">--</button>";
             html += "</td>";
-
-
             html += "<td>";
-
             html += "<button id=\"" + (idButton + 10) + "\" class=\"button\"  onclick=\"define(" + (idButton + 10) + ")\">--</button>";
             html += "</td>";
-
             html += "<td>";
-
             html += "<button id=\"" + (idButton + 11) + "\" class=\"button\"  onclick=\"define(" + (idButton + 11) + ")\">--</button>";
             html += "</td>";
-
             html += "<td>";
-
             html += "<button id=\"" + (idButton + 12) + "\" class=\"button\"  onclick=\"define(" + (idButton + 12) + ")\">--</button>";
             html += "</td>";
-
             html += "<td>";
-
             html += "<button id=\"" + (idButton + 13) + "\" class=\"button\"  onclick=\"define(" + (idButton + 13) + ")\">--</button><br>";
-
             html += "</td>";
-
-
             html += "</tr>";
-
             html += "<tr>";
             html += "<td>";
-
-
             html += "<button id=\"" + (idButton + 14) + "\" class=\"button\"  onclick=\"define(" + (idButton + 14) + ")\">--</button>";
             html += "</td>";
-
             html += "<td>";
-
             html += "<button id=\"" + (idButton + 15) + "\" class=\"button\"  onclick=\"define(" + (idButton + 15) + ")\">--</button>";
             html += "</td>";
-
             html += "<td>";
-
             html += "<button id=\"" + (idButton + 16) + "\" class=\"button\"  onclick=\"define(" + (idButton + 16) + ")\">--</button>";
             html += "</td>";
-
             html += "<td>";
-
             html += "<button id=\"" + (idButton + 17) + "\" class=\"button\"  onclick=\"define(" + (idButton + 17) + ")\">--</button>";
             html += "</td>";
-
             html += "<td>";
-
             html += "<button id=\"" + (idButton + 18) + "\" class=\"button\"  onclick=\"define(" + (idButton + 18) + ")\">--</button>";
             html += "</td>";
-
             html += "<td>";
-
             html += "<button id=\"" + (idButton + 19) + "\" class=\"button\"  onclick=\"define(" + (idButton + 19) + ")\">--</button>";
             html += "</td>";
-
             html += "<td>";
-
             html += "<button id=\"" + (idButton + 20) + "\" class=\"button\"  onclick=\"define(" + (idButton + 20) + ")\">--</button><br>";
             html += "</td>";
-
             html += "</tr>";
-
-
-
             html += "<tr>";
             html += "<td>";
-
             html += "<button id=\"" + (idButton + 21) + "\" class=\"button\"  onclick=\"define(" + (idButton + 21) + ")\">--</button>";
             html += "</td>";
-
             html += "<td>";
             html += "<button id=\"" + (idButton + 22) + "\" class=\"button\"  onclick=\"define(" + (idButton + 22) + ")\">--</button>";
-
-
             html += "</td>";
-
-
             html += "<td>";
             html += "<button id=\"" + (idButton + 23) + "\" class=\"button\"  onclick=\"define(" + (idButton + 23) + ")\">--</button>";
-
-
             html += "</td>";
-
-
             html += "<td>";
             html += "<button id=\"" + (idButton + 24) + "\" class=\"button\"  onclick=\"define(" + (idButton + 24) + ")\">--</button>";
-
-
             html += "</td>";
-
             html += "<td>";
             html += "<button id=\"" + (idButton + 25) + "\" class=\"button\"  onclick=\"define(" + (idButton + 25) + ")\">--</button>";
-
-
             html += "</td>";
-
-
             html += "<td>";
             html += "<button id=\"" + (idButton + 26) + "\" class=\"button\"  onclick=\"define(" + (idButton + 26) + ")\">--</button>";
-
-
             html += "</td>";
-
-
-
             html += "<td>";
             html += "<button id=\"" + (idButton + 27) + "\" class=\"button\"  onclick=\"define(" + (idButton + 27) + ")\">--</button>";
-
-
             html += "</td>";
-
             html += "</tr>";
-
-
             html += "<tr>";
             html += "<td>";
-
             html += "<button id=\"" + (idButton + 28) + "\" class=\"button\"  onclick=\"define(" + (idButton + 28) + ")\">--</button>";
             html += "</td>";
-
-
             html += "<td>";
-
             html += "<button id=\"" + (idButton + 29) + "\" class=\"button\"  onclick=\"define(" + (idButton + 29) + ")\">--</button>";
-
             html += "</td>";
-
-
             html += "<td>";
-
             html += "<button id=\"" + (idButton + 30) + "\" class=\"button\"  onclick=\"define(" + (idButton + 30) + ")\">--</button>";
-
             html += "</td>";
-
-
             html += "<td>";
-
             html += "<button id=\"" + (idButton + 31) + "\" class=\"button\"  onclick=\"define(" + (idButton + 31) + ")\">--</button>";
-
             html += "</td>";
-
-
             html += "<td>";
-
             html += "<button id=\"" + (idButton + 32) + "\" class=\"button\"  onclick=\"define(" + (idButton + 32) + ")\">--</button>";
-
             html += "</td>";
-
-
             html += "<td>";
-
             html += "<button id=\"" + (idButton + 33) + "\" class=\"button\"  onclick=\"define(" + (idButton + 33) + ")\">--</button>";
-
             html += "</td>";
-
-
             html += "<td>";
-
             html += "<button id=\"" + (idButton + 34) + "\" class=\"button\"  onclick=\"define(" + (idButton + 34) + ")\">--</button>";
-
             html += "</td>";
-
             html += "</tr>";
-
             html += "<tr>";
             html += "<td>";
-
             html += "<button id=\"" + (idButton + 35) + "\" class=\"button\"  onclick=\"define(" + (idButton + 35) + ")\">--</button>";
             html += "</td>";
-
             html += "<td>";
-
             html += "<button id=\"" + (idButton + 36) + "\" class=\"button\"  onclick=\"define(" + (idButton + 36) + ")\">--</button>";
             html += "</td>";
-
             html += "<td>";
-
             html += "<button id=\"" + (idButton + 37) + "\" class=\"button\"  onclick=\"define(" + (idButton + 37) + ")\">--</button>";
             html += "</td>";
-
             html += "<td>";
-
             html += "<button id=\"" + (idButton + 38) + "\" class=\"button\"  onclick=\"define(" + (idButton + 38) + ")\">--</button>";
             html += "</td>";
-
             html += "<td>";
-
             html += "<button id=\"" + (idButton + 39) + "\" class=\"button\"  onclick=\"define(" + (idButton + 39) + ")\">--</button>";
             html += "</td>";
-
             html += "<td>";
-
             html += "<button id=\"" + (idButton + 40) + "\" class=\"button\"  onclick=\"define(" + (idButton + 40) + ")\">--</button>";
             html += "</td>";
-
             html += "<td>";
-
             html += "<button id=\"" + (idButton + 41) + "\" class=\"button\"  onclick=\"define(" + (idButton + 41) + ")\">--</button>";
             html += "</td>";
-
-
-            // html += "<td>";
-
-            // html += "<button id=\"" + (idButton + 42) + "\" class=\"button\"  onclick=\"define(" + (idButton + 42) + ")\">--</button>";
-            // html += "</td>";
-
-
-
-
-
-
-
-
-
-
             html += "</tr>";
-
-            html += "</table><button class=\"btn btn-secondary\" name=\"btn_inicializar_" + idButton + "\" onclick=\"inicializarInicioFim(" + idButton + ", " + (idButton + 41) + ")\"> Limpar</button> ";
-
-            html += "<button class=\"btn btn-success\" name=\"btn_inicializar_salvar_" + idButton + "\" onclick=\"salvarInicioFim(" + idButton + ", " + (idButton + 41) + ")\"> Salvar </button>";
-
+            html += "</table><button class=\"btn btn-secondary\" name=\"btn_inicializar_" + idButton + "\" onclick=\"inicializarInicioFim(" + idButton + ", " + (idButton + 41) + ")\">Reiniciar</button> ";
+            html += "<button class=\"btn btn-success\" name=\"btn_inicializar_salvar_" + idButton + "\" onclick=\"salvarInicioFim(" + idButton + ", " + (idButton + 41) + ")\"> Salvar </button> ";
+            html += "<button class=\"btn btn-warning\" name=\"btn_inicializar_limpar_" + idButton + "\" onclick=\"limparInicioFim(" + idButton + ", " + (idButton + 41) + ")\"> Limpar </button> ";
             if (idButton != 1) html += " <button class=\"btn btn-danger\" name=\"btn_inicializar_deletar_" + idButton + "\" onclick=\"deletarInicioFim(" + idButton + ", " + (idButton + 41) + ")\"> Deletar </button>";
-
-            // html += "<br><br>";
             document.querySelector("#corpo").innerHTML += html;
-
-
-
-
-            // html += "<br>";
-
-            // </div>
-
         }
     </script>
 </head>
@@ -788,9 +686,10 @@
     <br>
     <br>
     <!-- <h3>Braço(s): -->
-        <h3> <button id="btn_novo_braco" onclick="novo_braco()">+Braço</button> <button id="btn_imprimir1" onclick="imprimir()" class="btn btn-primary">Modo Impressão</button>
-        </h3>
-        <br>
+    <h3> <button id="btn_novo_braco" onclick="novo_braco()">+Braço</button> <button id="btn_imprimir1"
+            onclick="imprimir()" class="btn btn-primary">Modo Impressão</button>
+    </h3>
+    <br>
 
     <div style="  display: flex;   flex-flow: row wrap;">
 
