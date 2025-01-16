@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!DOCTYPE html><html><head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="icon" type="image/x-icon" href="favicon.ico">
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>Christian Talaier</title>
     <style>
         .button {
             background-color: gray;
@@ -49,7 +49,7 @@
         // localStorage.clear();
         // alert(localStorage.getItem("shapes") === null);
         if (localStorage.getItem("shapes") === null) {
-            localStorage.setItem("shapes", JSON.stringify([{ "nome": "Escala Menor Natural - Shape C", "shape": [{ "botao": "3", "dedo": "1", "tonica": "black" }, { "botao": "5", "dedo": "3", "tonica": "black" }, { "botao": "6", "dedo": "4", "tonica": "black" }, { "botao": "10", "dedo": "1", "tonica": "red" }, { "botao": "12", "dedo": "3", "tonica": "black" }, { "botao": "13", "dedo": "4", "tonica": "black" }, { "botao": "16", "dedo": "1", "tonica": "black" }, { "botao": "17", "dedo": "2", "tonica": "black" }, { "botao": "19", "dedo": "4", "tonica": "black" }, { "botao": "23", "dedo": "1", "tonica": "black" }, { "botao": "24", "dedo": "2", "tonica": "black" }, { "botao": "26", "dedo": "4", "tonica": "black" }, { "botao": "33", "dedo": "4", "tonica": "red" }] }, { "nome": "Escala Menor Natural - Shape A", "shape": [{ "botao": "2", "dedo": "1", "tonica": "black" }, { "botao": "3", "dedo": "2", "tonica": "black" }, { "botao": "5", "dedo": "4", "tonica": "black" }, { "botao": "9", "dedo": "1", "tonica": "black" }, { "botao": "10", "dedo": "2", "tonica": "black" }, { "botao": "12", "dedo": "4", "tonica": "black" }, { "botao": "16", "dedo": "1", "tonica": "black" }, { "botao": "18", "dedo": "3", "tonica": "red" }, { "botao": "23", "dedo": "1", "tonica": "black" }, { "botao": "25", "dedo": "3", "tonica": "black" }, { "botao": "26", "dedo": "4", "tonica": "black" }, { "botao": "30", "dedo": "1", "tonica": "red" }, { "botao": "32", "dedo": "3", "tonica": "black" }, { "botao": "33", "dedo": "4", "tonica": "black" }] }, { "nome": "Escala Menor Natural - Shape E", "shape": [{ "botao": "2", "dedo": "1", "tonica": "red" }, { "botao": "4", "dedo": "3", "tonica": "black" }, { "botao": "5", "dedo": "4", "tonica": "black" }, { "botao": "9", "dedo": "1", "tonica": "black" }, { "botao": "10", "dedo": "2", "tonica": "black" }, { "botao": "12", "dedo": "4", "tonica": "black" }, { "botao": "15", "dedo": "1", "tonica": "black" }, { "botao": "16", "dedo": "2", "tonica": "black" }, { "botao": "18", "dedo": "3", "tonica": "black" }, { "botao": "23", "dedo": "1", "tonica": "black" }, { "botao": "25", "dedo": "3", "tonica": "red" }, { "botao": "30", "dedo": "1", "tonica": "black" }, { "botao": "32", "dedo": "3", "tonica": "black" }, { "botao": "33", "dedo": "4", "tonica": "black" }, { "botao": "37", "dedo": "1", "tonica": "red" }, { "botao": "39", "dedo": "3", "tonica": "black" }, { "botao": "40", "dedo": "4", "tonica": "black" }] }]));
+            localStorage.setItem("shapes", JSON.stringify([{ "nome": "Escala Menor Natural - Shape C", "conteudo": "", "shape": [{ "botao": "3", "dedo": "1", "tonica": "black" }, { "botao": "5", "dedo": "3", "tonica": "black" }, { "botao": "6", "dedo": "4", "tonica": "black" }, { "botao": "10", "dedo": "1", "tonica": "red" }, { "botao": "12", "dedo": "3", "tonica": "black" }, { "botao": "13", "dedo": "4", "tonica": "black" }, { "botao": "16", "dedo": "1", "tonica": "black" }, { "botao": "17", "dedo": "2", "tonica": "black" }, { "botao": "19", "dedo": "4", "tonica": "black" }, { "botao": "23", "dedo": "1", "tonica": "black" }, { "botao": "24", "dedo": "2", "tonica": "black" }, { "botao": "26", "dedo": "4", "tonica": "black" }, { "botao": "33", "dedo": "4", "tonica": "red" }] }, { "nome": "Escala Menor Natural - Shape A", "shape": [{ "botao": "2", "dedo": "1", "tonica": "black" }, { "botao": "3", "dedo": "2", "tonica": "black" }, { "botao": "5", "dedo": "4", "tonica": "black" }, { "botao": "9", "dedo": "1", "tonica": "black" }, { "botao": "10", "dedo": "2", "tonica": "black" }, { "botao": "12", "dedo": "4", "tonica": "black" }, { "botao": "16", "dedo": "1", "tonica": "black" }, { "botao": "18", "dedo": "3", "tonica": "red" }, { "botao": "23", "dedo": "1", "tonica": "black" }, { "botao": "25", "dedo": "3", "tonica": "black" }, { "botao": "26", "dedo": "4", "tonica": "black" }, { "botao": "30", "dedo": "1", "tonica": "red" }, { "botao": "32", "dedo": "3", "tonica": "black" }, { "botao": "33", "dedo": "4", "tonica": "black" }] }, { "nome": "Escala Menor Natural - Shape E", "shape": [{ "botao": "2", "dedo": "1", "tonica": "red" }, { "botao": "4", "dedo": "3", "tonica": "black" }, { "botao": "5", "dedo": "4", "tonica": "black" }, { "botao": "9", "dedo": "1", "tonica": "black" }, { "botao": "10", "dedo": "2", "tonica": "black" }, { "botao": "12", "dedo": "4", "tonica": "black" }, { "botao": "15", "dedo": "1", "tonica": "black" }, { "botao": "16", "dedo": "2", "tonica": "black" }, { "botao": "18", "dedo": "3", "tonica": "black" }, { "botao": "23", "dedo": "1", "tonica": "black" }, { "botao": "25", "dedo": "3", "tonica": "red" }, { "botao": "30", "dedo": "1", "tonica": "black" }, { "botao": "32", "dedo": "3", "tonica": "black" }, { "botao": "33", "dedo": "4", "tonica": "black" }, { "botao": "37", "dedo": "1", "tonica": "red" }, { "botao": "39", "dedo": "3", "tonica": "black" }, { "botao": "40", "dedo": "4", "tonica": "black" }]}]));
 
         } /*else {
             if (localStorage.getItem("shapes").length == 0) {
@@ -62,21 +62,21 @@
                 var shapes = JSON.parse(document.getElementById("importar").value);
                 if (shapes.length > 0) {
                     localStorage.setItem("shapes", JSON.stringify(shapes));
-                    alert("Importação realizada!\nSalve a saída de exportação e um lugar seguro e importe em outra máquina quando precisar");
+                    alert("Importação realizada!\nSalve a saída da exportação em um lugar seguro! Assim você pode restaurar em qualquer momento quando precisar!");
                     document.getElementById("importar").value = "";
                     listar_shapes();
                 } else {
-                    alert("erro na importação");
+                    alert("Erro!");
                 }
             } catch (e) {
-                alert("erro na importação");
+                alert("Erro!");
             }
         }
 
         function exportar() {
             document.getElementById("exportar").innerHTML = "";
             if (document.getElementById("btn_exportar").innerHTML == 'Exportar') {
-                document.getElementById("exportar").innerHTML = "<h3> Saída - Exportação dos Shapes Salvos:</h3>" + localStorage.getItem("shapes");
+                document.getElementById("exportar").innerHTML = "<h3> Sa&iacute;da - Exporta&ccedil;&atilde;o dos Shapes Salvos:</h3>" + localStorage.getItem("shapes");
                 document.getElementById("btn_exportar").innerHTML = 'Limpar Exportar';
             } else {
                 document.getElementById("btn_exportar").innerHTML = 'Exportar';
@@ -89,21 +89,22 @@
             var s = shapes[i];
             var resultado = confirm("Deseja mesmo substituir a configuração salva \"" + s.nome + "\" por esta que está no braço 1?");
             if (resultado === true) {
-                alert("O shape " + s.nome + " receberá a configuração que está em exibição");
+                alert("O shape " + s.nome + " receberá a configuração que está em exibição no braço 1");
                 s.nome = prompt("Novo nome para " + s.nome + "?", s.nome);
-                if (s.nome != "") {
+                if (s.nome != "" && s.nome != null && s.nome != "null" && s.nome != undefined && s.nome != "undefined") {
                     var shapeNovo = []
                     for (let index = 0; index < vetBotao.length; index++) {
                         if (/*vetBotao[index].innerHTML == "--" ||*/ vetBotao[index].innerHTML == "1" || vetBotao[index].innerHTML == "2" || vetBotao[index].innerHTML == "3" || vetBotao[index].innerHTML == "4") {
-                            shapeNovo.push({ "botao": vetBotao[index].id, "dedo": vetBotao[index].innerHTML, "tonica": vetBotao[index].style.backgroundColor })
+                            shapeNovo.push({ "botao": vetBotao[index].id, "dedo": vetBotao[index].innerHTML, "tonica": vetBotao[index].style.backgroundColor})
                         }
                     }
                     s.shape = shapeNovo;
+                    s.conteudo =  document.getElementById("textarea_1").value;            
                     shapes[i] = s;
                     localStorage.setItem("shapes", JSON.stringify(shapes));
                     listar_shapes();
                 } else {
-                    alert("nome não pode estar em branco");
+                    alert("nome inválido");
                 }
             } else {
                 alert("Operação cancelada!");
@@ -132,15 +133,13 @@
                 alert("Nome inválido! Shape " + shapeDuplicado.nome + " não foi duplicado!");
                 return;
             } else if (nome != null) {
-                shapes.push({ "nome": nome, "shape": shapeDuplicado.shape });
+                shapes.push({"nome": nome, "conteudo": shapeDuplicado.conteudo,"shape": shapeDuplicado.shape});
                 localStorage.setItem("shapes", JSON.stringify(shapes));
                 listar_shapes();
             }
         }
 
         function restaurar(i) {
-            // var vetBraco = document.querySelectorAll("table[name^='braco']");
-            // if (vetBraco.length == 0) novo_braco();
             alert("A configuração será restaurada no braço 1")
             reiniciar();
             var s = JSON.parse(localStorage.getItem("shapes"))[i];
@@ -148,19 +147,18 @@
                 document.getElementById(s.shape[index].botao).innerHTML = s.shape[index].dedo;
                 document.getElementById(s.shape[index].botao).style.backgroundColor = s.shape[index].tonica;
             }
+            document.getElementById("textarea_1").value = ((s.conteudo == undefined) ? "" : s.conteudo);            
         }
 
 
-        function imprimir() {
-            // function imprimir(i) {
-            // restaurar(i);            
-            // var vetBotao = document.querySelectorAll("button");
-            // for (let index = 0; index < vetBotao.length; index++) {
-            //     if (vetBotao[index].innerHTML == "--") {
-            //         vetBotao[index].style.zIndex = -1;
-            //     }
-            // }
-
+        function imprimir() {      
+            var vetTextarea = document.querySelectorAll("textarea");
+            for (let index = 0; index < vetTextarea.length; index++) {
+                if(vetTextarea[index].value == undefined || vetTextarea[index].value == "" || vetTextarea[index].value == " "){    
+                   vetTextarea[index].style.display = "none";     
+                }
+            }
+            
             var vetHr = document.querySelectorAll("hr");
             for (let index = 0; index < vetHr.length; index++) {
                 vetHr[index].style.display = "none";
@@ -218,7 +216,7 @@
                 document.getElementById("lista_shapes").innerHTML += "<button class=\"btn btn-warning\" onclick='editar(" + index + ")'>Editar</button> ";
                 // document.getElementById("lista_shapes").innerHTML += "<button class=\"btn btn-sucess\" onclick='imprimir(" + index + ")'>Imprimir</button>";
                 // document.getElementById("lista_shapes").innerHTML += " <input type='checkbox' name='checkbox_shapes[]' value='"+index+"'>  ";
-                document.getElementById("lista_shapes").innerHTML += s.nome + "<br>";
+                document.getElementById("lista_shapes").innerHTML += "<b>Nome:</b>"+s.nome + " <b>Conteúdo:</b>"+((s.conteudo == undefined || s.conteudo == "" || s.conteudo == null) ? "" : s.conteudo.substring(0,10))+"..." + "<br>";
                 for (let index1 = 0; index1 < s.shape.length; index1++) {
                     var b = s.shape[index1];
                     // document.getElementById("lista_shapes").innerHTML += "*" + b.botao + ";" + b.dedo + "<br>";
@@ -266,8 +264,8 @@
                     }
                 }
                 if (shapeNovo.length > 0) {
-                    var shapes = JSON.parse(localStorage.getItem("shapes"));
-                    shapes.push({ "nome": nome, "shape": shapeNovo });
+                    var shapes = JSON.parse(localStorage.getItem("shapes"));                    
+                    shapes.push({ "nome": nome, "conteudo": document.getElementById("textarea_"+IDbotaoInicial).value, "shape": shapeNovo });                    
                     localStorage.setItem("shapes", JSON.stringify(shapes));
                     listar_shapes();
                 }
@@ -311,7 +309,6 @@
                 for (let index = 0; index < vetBotao.length; index++) {
                     if (!isNaN(vetBotao[index].id)) {
                         if (parseInt(vetBotao[index].id) >= IDbotaoInicial && parseInt(vetBotao[index].id) <= IDbotaoFinal) {
-
                             if (vetBotao[index].innerHTML == "--") {
                                 vetBotao[index].style.backgroundColor = "transparent";
                                 vetBotao[index].style.color = "transparent";
@@ -321,7 +318,6 @@
                 }
                 document.getElementsByName("btn_inicializar_limpar_" + IDbotaoInicial)[0].innerHTML = "Retornar";
             } else {
-                // alert("oi");
                 for (let index = 0; index < vetBotao.length; index++) {
                     if (!isNaN(vetBotao[index].id)) {
                         if (parseInt(vetBotao[index].id) >= IDbotaoInicial && parseInt(vetBotao[index].id) <= IDbotaoFinal) {
@@ -375,6 +371,9 @@
                 document.getElementById(id).style.color = "white";
                 document.getElementById(id).style.backgroundColor = "red";
             } else if (document.getElementById(id).innerHTML == "1" && document.getElementById(id).style.backgroundColor == "red") {
+                document.getElementById(id).style.color = "white";
+                document.getElementById(id).style.backgroundColor = "blue";
+            } else if (document.getElementById(id).innerHTML == "1" && document.getElementById(id).style.backgroundColor == "blue") {
                 document.getElementById(id).innerHTML = "2";
                 document.getElementById(id).style.color = "white";
                 document.getElementById(id).style.backgroundColor = "black";
@@ -382,13 +381,19 @@
                 document.getElementById(id).style.color = "white";
                 document.getElementById(id).style.backgroundColor = "red";
             } else if (document.getElementById(id).innerHTML == "2" && document.getElementById(id).style.backgroundColor == "red") {
+                document.getElementById(id).style.color = "white";
+                document.getElementById(id).style.backgroundColor = "blue";
+            } else if (document.getElementById(id).innerHTML == "2" && document.getElementById(id).style.backgroundColor == "blue") {
                 document.getElementById(id).innerHTML = "3";
                 document.getElementById(id).style.color = "white";
                 document.getElementById(id).style.backgroundColor = "black";
             } else if (document.getElementById(id).innerHTML == "3" && document.getElementById(id).style.backgroundColor == "black") {
                 document.getElementById(id).style.color = "white";
                 document.getElementById(id).style.backgroundColor = "red";
-            } else if (document.getElementById(id).innerHTML == "3" && document.getElementById(id).style.backgroundColor == "red") {
+            }  else if (document.getElementById(id).innerHTML == "3" && document.getElementById(id).style.backgroundColor == "red") {
+                document.getElementById(id).style.color = "white";
+                document.getElementById(id).style.backgroundColor = "blue";
+            } else if (document.getElementById(id).innerHTML == "3" && document.getElementById(id).style.backgroundColor == "blue") {
                 document.getElementById(id).innerHTML = "4";
                 document.getElementById(id).style.color = "white";
                 document.getElementById(id).style.backgroundColor = "black";
@@ -396,6 +401,9 @@
                 document.getElementById(id).style.color = "white";
                 document.getElementById(id).style.backgroundColor = "red";
             } else if (document.getElementById(id).innerHTML == "4" && document.getElementById(id).style.backgroundColor == "red") {
+                document.getElementById(id).style.color = "white";
+                document.getElementById(id).style.backgroundColor = "blue";
+            } else if (document.getElementById(id).innerHTML == "4" && document.getElementById(id).style.backgroundColor == "blue") {
                 document.getElementById(id).innerHTML = "--";
                 document.getElementById(id).style.backgroundColor = "";
             }
@@ -460,7 +468,7 @@
             document.getElementsByName("btn_inicializar_salvar_" + IDbotaoInicial)[0].remove();
             document.getElementsByName("btn_inicializar_deletar_" + IDbotaoInicial)[0].remove();
             document.getElementsByName("btn_inicializar_limpar_" + IDbotaoInicial)[0].remove();
-            // document.querySelector("#div_" + IDbotaoInicial).remove();
+            document.getElementById("textarea_" + IDbotaoInicial).remove();
         }
 
         function inicializarInicioFim(IDbotaoInicial, IDbotaoFinal) {
@@ -486,12 +494,10 @@
 
             }
 
-            // var vetBotao = document.querySelectorAll("button");
-            // for (let index = 0; index < vetBotao.length; index++) {
-            //     if (vetBotao[index].innerHTML == "--") {
-            //         vetBotao[index].style.zIndex = 1;
-            //     }
-            // }
+            var vetTextarea = document.querySelectorAll("textarea");
+            for (let index = 0; index < vetTextarea.length; index++) {
+                vetTextarea[index].style.display = "";               
+            }
 
             var vetBotao = document.querySelectorAll("button[name^='btn_inicializar']");
             for (let index = 0; index < vetBotao.length; index++) {
@@ -552,10 +558,11 @@
             return maior;
         }
 
-        function novo_braco() {
+        function novo_braco() {            
             var idButton = parseInt(maiorIDButton()) + 1;
+            // alert(idButton);
             var html = "";
-            html += "<table style=\"margin-top: 15px\" id=\"braco_" + idButton + "\">";
+            html += "<table style=\"margin-top: 10px\" id=\"braco_" + idButton + "\">";
             html += "<tr>";
             html += "<td>";
             html += "<button id=\"" + (idButton) + "\" class=\"button\" onclick=\"define(" + (idButton) + ")\">--</button>";
@@ -694,34 +701,31 @@
             html += "<button id=\"" + (idButton + 41) + "\" class=\"button\"  onclick=\"define(" + (idButton + 41) + ")\">--</button>";
             html += "</td>";
             html += "</tr>";
-            html += "</table><button class=\"btn btn-secondary\" name=\"btn_inicializar_" + idButton + "\" onclick=\"inicializarInicioFim(" + idButton + ", " + (idButton + 41) + ")\">Reiniciar</button> ";
-            html += "<button class=\"btn btn-success\" name=\"btn_inicializar_salvar_" + idButton + "\" onclick=\"salvarInicioFim(" + idButton + ", " + (idButton + 41) + ")\"> Salvar </button> ";
-            html += "<button class=\"btn btn-warning\" name=\"btn_inicializar_limpar_" + idButton + "\" onclick=\"limparInicioFim(" + idButton + ", " + (idButton + 41) + ")\"> Limpar </button> ";
-            if (idButton != 1) html += " <button class=\"btn btn-danger\" name=\"btn_inicializar_deletar_" + idButton + "\" onclick=\"deletarInicioFim(" + idButton + ", " + (idButton + 41) + ")\"> Deletar </button>";
+            html += "</table>";
+            html += "<button class=\"btn btn-secondary\" name=\"btn_inicializar_" + idButton + "\" onclick=\"inicializarInicioFim(" + idButton + ", " + (idButton + 41) + ")\">Reiniciar</button> ";
+            html += "<button class=\"btn btn-success\" name=\"btn_inicializar_salvar_" + idButton + "\" onclick=\"salvarInicioFim(" + idButton + ", " + (idButton + 41) + ")\"> Salvar </button> ";            
+            if (idButton != 1) {
+                html += "<button class=\"btn btn-warning\" name=\"btn_inicializar_limpar_" + idButton + "\" onclick=\"limparInicioFim(" + idButton + ", " + (idButton + 41) + ")\"> Limpar </button> ";            
+                html += "<button class=\"btn btn-danger\" name=\"btn_inicializar_deletar_" + idButton + "\" onclick=\"deletarInicioFim(" + idButton + ", " + (idButton + 41) + ")\"> Deletar </button><br><br>";
+            } else {
+                html += "<button class=\"btn btn-warning\" name=\"btn_inicializar_limpar_" + idButton + "\" onclick=\"limparInicioFim(" + idButton + ", " + (idButton + 41) + ")\"> Limpar </button><br><br>";            
+            }
+            html += "<textarea id=\"textarea_" + idButton +"\" rows=\"10\" cols=\"70\"> </textarea>";
             document.querySelector("#corpo").innerHTML += html;
         }
     </script>
-</head>
+    </head>
 
 <body onload="novo_braco(); listar_shapes();">    
-    <div style="display: flex; justify-content: space-around; background-color: black;">
-        <img src="logo.png" style="max-height: 200px; position: left;"></div>                
-    </div>
-    
-    <!-- <img src="logo_repeat.png" height="300px"
-        style="width: 85%; background-repeat: repeat-x; position: float; float: right; z-index: -10; ">     -->
+    <div style="display: flex; justify-content: space-around; background-color: rgb(59,15,18);">
+        <img src="logo.png" style="max-height: 200px; position: left;"></div>                    
     <br>
     <br>
-    <!-- <h3>Braço(s): -->
-    <h3> <button id="btn_novo_braco" onclick="novo_braco()">+Braço</button> <button id="btn_imprimir1"
-            onclick="imprimir()" class="btn btn-primary">Modo Impressão</button>
+    <h3> 
+        <button id="btn_novo_braco" onclick="novo_braco()">+braço</button> <button id="btn_imprimir1" onclick="imprimir()" class="btn btn-primary">Modo Impress&atilde;o</button>
     </h3>
     <br>
-
-    <div style="  display: flex;   flex-flow: row wrap;">
-
-
-
+    <div style="display: flex; flex-flow: row wrap;">
         <div id="corpo" style="padding-left: 10px;">
             <!--<div>
             <img src="violao.jpg">
@@ -843,7 +847,7 @@
 
 
             <button id="btn_exportar" onclick="exportar()" class="btn btn-info">Exportar</button>
-            <button id="btn_importar" onclick="importar()" class="btn btn-info">Importar</button>
+            <button id="btn_importar" onclick="importar()" class="btn btn-info">Importar</button><br><br>
             <textarea id="importar" cols="40" rows="5"></textarea>
 
             <button id="btn_desativa_imprimir" onclick="desativa_imprimir()" style="display:none;">Voltar</button>
@@ -854,12 +858,8 @@
         </div>
     </div>
     <div id="exportar"></div>
-
     <div class="div_rodape">
         <img src="logo_branco.png" height="10%" width="10%" class="img_rodape">
     </div>
 
-</body>
-
-</html>
-
+</body></html>
