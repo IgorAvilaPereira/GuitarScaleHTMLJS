@@ -3,7 +3,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="icon" type="image/x-icon" href="favicon.ico">
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Igor Pereira</title>
+
+<title>Igor Pereira</title>
     <style>
         .button {
             background-color: gray;
@@ -143,8 +144,15 @@
             reiniciar();
             var s = JSON.parse(localStorage.getItem("shapes"))[i];
             for (let index = 0; index < s.shape.length; index++) {
-                document.getElementById(s.shape[index].botao).innerHTML = s.shape[index].dedo;
-                document.getElementById(s.shape[index].botao).style.backgroundColor = s.shape[index].tonica;
+                if (/*vetBotao[index].innerHTML == "--" ||*/ s.shape[index].dedo == "1" ||  s.shape[index].dedo == "2" || s.shape[index].dedo == "3" || s.shape[index].dedo == "4") {
+                    document.getElementById(s.shape[index].botao).innerHTML = s.shape[index].dedo;
+                    document.getElementById(s.shape[index].botao).style.backgroundColor = s.shape[index].tonica;
+                    document.getElementById(s.shape[index].botao).style.color = "white";
+                } else {
+                    document.getElementById(s.shape[index].botao).innerHTML = "--";
+                    document.getElementById(s.shape[index].botao).style.backgroundColor = "gray";
+                    document.getElementById(s.shape[index].botao).style.color = "white";
+                }
             }
             document.getElementById("textarea_1").value = ((s.conteudo == undefined) ? "" : s.conteudo);            
         }
@@ -155,7 +163,10 @@
             for (let index = 0; index < vetTextarea.length; index++) {
                 if(vetTextarea[index].value == undefined || vetTextarea[index].value == "" || vetTextarea[index].value == " "){    
                    vetTextarea[index].style.display = "none";     
-                }
+                } /*else {
+                    document.getElementById("corpo").innerHTML+=vetTextarea[index].value+"<br>";
+                    vetTextarea[index].style.display = "none";     
+                }*/
             }
             
             var vetHr = document.querySelectorAll("hr");
@@ -325,6 +336,8 @@
                                 vetBotao[index].style.color = "";
                                 vetBotao[index].innerHTML = "--";
                                 vetBotao[index].className = "button";
+                            } else {
+                                vetBotao[index].style.color = "white";
                             }
                         }
                     }
@@ -533,10 +546,10 @@
 
 
         function imprimir_mesmo() {
+           
             // var vetBotao = document.querySelectorAll("button[name^='btn_inicializar']");
             // for (let index = 0; index < vetBotao.length; index++) {
             //     vetBotao[index].style.display = "none";
-
             // }
             document.getElementById("btn_novo_braco").style.display = "none";
             document.getElementById("btn_imprimir").style.display = "none";
@@ -719,11 +732,9 @@
     <div style="display: flex; justify-content: space-around; background-color: rgb(59,15,18);">
         <img src="logo.png" style="max-height: 200px; position: left;"></div>                    
     <br>
-    <br>
     <h3> 
         <button id="btn_novo_braco" onclick="novo_braco()">+braço</button> <button id="btn_imprimir1" onclick="imprimir()" class="btn btn-primary">Modo Impress&atilde;o</button>
     </h3>
-    <br>
     <div style="display: flex; flex-flow: row wrap;">
         <div id="corpo" style="padding-left: 10px;">
             <!--<div>
