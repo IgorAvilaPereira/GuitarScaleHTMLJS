@@ -148,13 +148,10 @@
                     document.getElementById(s.shape[index].botao).innerHTML = s.shape[index].dedo;
                     document.getElementById(s.shape[index].botao).style.backgroundColor = s.shape[index].tonica;
                     document.getElementById(s.shape[index].botao).style.color = "white";
-                } else {
-                    document.getElementById(s.shape[index].botao).innerHTML = "--";
-                    document.getElementById(s.shape[index].botao).style.backgroundColor = "gray";
-                    document.getElementById(s.shape[index].botao).style.color = "white";
                 }
             }
             document.getElementById("textarea_1").value = ((s.conteudo == undefined) ? "" : s.conteudo);            
+            limparInicioFim(1, 42);
         }
 
 
