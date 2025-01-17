@@ -6,7 +6,7 @@
         <link rel="icon" type="image/x-icon" href="favicon.ico">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         
-        <title>Igor Pereira</title>    
+        <title>Christian Talaier</title>    
     
         <style>
             .button {
@@ -64,17 +64,17 @@
                         document.getElementById("importar").value = "";
                         listar_shapes();
                     } else {
-                        alert("Erro!");
+                        alert("Erro! Dica: Use a Caixa de Texto abaixo para importar seus shapes!");
                     }
                 } catch (e) {
-                    alert("Erro!");
+                    alert("Erro! Dica: Use a Caixa de Texto abaixo para importar seus shapes!");
                 }
             }
 
             function exportar() {
                 document.getElementById("exportar").innerHTML = "";
                 if (document.getElementById("btn_exportar").innerHTML == 'Exportar') {
-                    document.getElementById("exportar").innerHTML = "<h3> Sa&iacute;da - Exporta&ccedil;&atilde;o (Shapes):</h3>" + localStorage.getItem("shapes");
+                    document.getElementById("exportar").innerHTML = "<h3><b>Sa&iacute;da - Exporta&ccedil;&atilde;o (Shapes):</b></h3>" + localStorage.getItem("shapes");
                     document.getElementById("btn_exportar").innerHTML = 'Limpar Exportar';
                 } else {
                     document.getElementById("btn_exportar").innerHTML = 'Exportar';
@@ -189,7 +189,7 @@
             function listar_shapes() {
                 document.getElementById("lista_shapes").innerHTML = "";
                 var shapes = JSON.parse(localStorage.getItem("shapes"));
-                if (shapes.length > 0) document.getElementById("lista_shapes").innerHTML += "<h3> Shapes Salvos</h3>";
+                if (shapes.length > 0) document.getElementById("lista_shapes").innerHTML += "<h3><b>Shapes:</b></h3>";
                 for (let index = 0; index < shapes.length; index++) {
                     var s = shapes[index];
                     document.getElementById("lista_shapes").innerHTML += "<button class=\"btn btn-info\" onclick='restaurar(" + index + ")'>Restaurar</button>";
@@ -610,8 +610,8 @@
         <div style="display: flex; justify-content: space-around; background-color: rgb(59,15,18);">
             <img src="logo.png" style="max-height: 200px; position: left;"></div>                    
         <h3> 
-            <button id="btn_novo_braco" onclick="novo_braco()" style="margin-top: 5px;">+braço</button> 
-            <button id="btn_imprimir1" onclick="imprimir()" class="btn btn-primary" style="margin-top: 5px;">Modo Impress&atilde;o</button>
+            <button id="btn_imprimir1" onclick="imprimir()" style="margin-top: 5px;" class="btn btn-primary">Modo Impress&atilde;o</button>
+            <button id="btn_novo_braco" onclick="novo_braco()" style="margin-top: 5px;" class="btn btn-success">+braço</button>             
         </h3>
         <div style="display: flex; flex-flow: row wrap;">
             <!-- esquerda -->
@@ -624,9 +624,9 @@
                 <div id="lista_shapes"></div>
                 <button id="btn_exportar" onclick="exportar()" class="btn btn-success">Exportar</button>
                 <button id="btn_importar" onclick="importar()" class="btn btn-info">Importar</button><br><br>
-                <textarea id="importar" cols="30" rows="9"></textarea>
-                <button id="btn_desativa_imprimir" onclick="desativa_imprimir()" style="display:none;">Voltar</button>
-                <button id="btn_imprimir" onclick="imprimir_mesmo()" style="display:none;">Imprimir</button>
+                <textarea id="importar" cols="30" rows="9"></textarea>                
+                <button id="btn_imprimir" onclick="imprimir_mesmo()" style="display:none;" class="btn btn-primary">Imprimir</button>
+                <button id="btn_desativa_imprimir" onclick="desativa_imprimir()" style="display:none;" class="btn btn-dark">Voltar</button>
                 <!-- <button onclick="maiorIDButton()">maior</button> -->
             </div>
         </div>
