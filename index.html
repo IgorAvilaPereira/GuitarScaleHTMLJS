@@ -446,6 +446,11 @@
 
             function novo_braco() {            
                 var idButton = parseInt(maiorIDButton()) + 1;
+                var vetTextarea = document.querySelectorAll('textarea[id^="textarea_"]');
+                for (let index = 0; index < vetTextarea.length; index++) {
+                    var textarea = vetTextarea[index];                    
+                    document.getElementById(textarea.id).innerHTML = textarea.value;                    
+                }
                 var html = "";
                 // html += "<div id=\"div_"+idButton+"\">";
                 html += "<table style=\"margin-top: 10px\" id=\"braco_" + idButton + "\">";
@@ -603,6 +608,10 @@
                 //     alert(vetTextarea[index].value);               
                 // }
                 document.getElementById("corpo").innerHTML += html;
+
+                
+              
+
             }
         </script>
     </head>
